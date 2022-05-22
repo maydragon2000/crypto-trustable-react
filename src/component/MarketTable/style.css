@@ -1,0 +1,278 @@
+.filter-bar {
+    padding-bottom: 20px;
+    border-bottom: solid 1px gray;
+}
+
+.filter-bar button {
+    background: transparent;
+    width: 140px;
+    height: 50px;
+    border: solid 2px #44454c;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #9295A6;
+    margin-right: 20px;
+}
+
+.filter-bar button:focus {
+    color: #5367FF;
+    border-color: #0169d9;
+}
+
+.filter-bar .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
+}
+
+.filter-bar .right .search-input-wrap {
+    width: 300px;
+    height: 50px;
+    padding: 13px 10px;
+    border: solid 2px #44454c;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.filter-bar .right .search-input-wrap img {
+    width: 24px;
+}
+
+.filter-bar .right .search-input-wrap input {
+    background: transparent;
+    border: 0px;
+    color: #9295A6;
+    margin-left: 20px;
+    font-size: 14px;
+    width: 80%;
+}
+
+.filter-bar .right .search-input-wrap input:focus-visible {
+    outline: none;
+}
+
+.filter-bar .right .search-input-wrap input:focus {
+    box-shadow: none;
+}
+
+.filter-bar .right .search-input-wrap input::placeholder {
+    color: #9295A6;
+}
+
+.market .toolbar {
+    padding: 30px 0px;
+    border-bottom: solid 1px gray;
+}
+
+.market .toolbar .left {
+    display: flex;
+}
+
+.market .toolbar .left a {
+    font-size: 16px;
+    color: #6C7080;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.market .toolbar .left a img {
+    margin-left: 5px;
+    margin-bottom: -5px;
+}
+
+.market .toolbar .left a .top {
+    display: none;
+}
+
+.market .toolbar .left a:focus {
+    color: #5367FF;
+    text-decoration: underline;
+    text-underline-offset: 30px;
+}
+
+.market .toolbar .left a:focus img {
+    color: #5367FF;
+}
+
+.market .toolbar .left a:focus .down {
+    display: none;
+}
+
+.market .toolbar .left a:focus .top {
+    display: block;
+}
+
+.market .toolbar .right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.market .toolbar .right select {
+    width: 83px;
+    height: 34px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9295A6;
+    font-size: 14px;
+}
+
+.market .toolbar .right select:focus-visible {
+    outline: none;
+}
+
+.market .toolbar .right .close {
+    width: 12px;
+    margin-right: 10px;
+}
+
+.market .toolbar .right .icon-filter,
+.market .toolbar .right .clear-filter {
+    width: 18px;
+}
+
+
+.market .toolbar .right .customize {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.market .toolbar .right a {
+    text-decoration: none;
+    color: #9295A6;
+    font-size: 14px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.market-table thead th {
+    color: #6C7080;
+    font-size: 14px;
+    cursor: pointer;
+    border: 0px;
+}
+
+.market-table thead .index {
+    width: 5%;
+}
+
+.market-table thead .name {
+    width: 25%;
+}
+
+.market-table thead .price,
+.market-table thead .percent,
+.market-table thead .high-price,
+.market-table thead .low-price {
+    width: 15%;
+}
+
+.market-table thead th img {
+    margin-top: -5px;
+    margin-left: 5px;
+}
+
+.market-table {
+    margin-top: 20px;
+}
+
+.market-table tr {
+    display: flex;
+}
+
+.market-table tbody tr .index {
+    display: flex;
+    color: #232530;
+    font-size: 16px;
+    width: 5%;
+    align-items: center;
+}
+
+.market-table tbody tr td {
+    border: 0px;
+}
+
+.market-table tbody tr .index img {
+    width: 19px;
+    margin-right: 5px;
+}
+
+.market-table tbody tr .name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 25%;
+}
+
+.market-table tbody tr .name img {
+    width: 30px;
+}
+
+.market-table tbody tr .name h5 {
+    margin: 0px;
+    font-size: 18px;
+    color: white;
+    margin-left: 5px;
+}
+
+.market-table tbody tr .name p {
+    margin: 0px;
+    width: 48px;
+    height: 23px;
+    display: flex;
+    background: #080808;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 5px;
+    justify-content: center;
+    margin-left: 10px;
+    color: #5367FF;
+}
+
+.market-table tbody tr .price,
+.market-table tbody tr .high-price,
+.market-table tbody tr .low-price {
+    width: 15%;
+    color: white;
+    font-size: 16px;
+}
+
+.market-table tbody tr .percent {
+    width: 15%;
+    color: #03A66D;
+    font-size: 16px;
+}
+
+.market-table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.market-table-footer p {
+    font-size: 14px;
+    color: #6C7080;
+}
+
+.market-table-footer a {
+    background: transparent;
+    color: #9295A6;
+    border: solid 1px transparent;
+    cursor: pointer;
+}
+
+.market-table-footer a:hover {
+    background-color: transparent;
+    color: #5367FF;
+    border: solid 1px #5367FF;
+    border-radius: 5px;
+}

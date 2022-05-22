@@ -1,0 +1,97 @@
+.header .navbar-brand img {
+    width: 40px;
+}
+
+.header .navbar {
+    height: 120px;
+    justify-content: space-around;
+    font-family: Inter;
+}
+
+.header .navbar-brand {
+    display: flex;
+    color: white;
+    align-items: center;
+    border-right: solid 1px grey;
+}
+
+.header .navbar-brand p {
+    margin-bottom: 0px;
+    color: white;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.header .navlink-wrap {
+    display: flex;
+}
+
+.header .nav-link {
+    color: white;
+}
+
+.header .nav-link:hover {
+    color: #5367FF;
+    transition: .3s;
+}
+
+.header .nav-link:focus {
+    color: #5367FF;
+    text-decoration: underline;
+    text-underline-offset: 40px;
+}
+
+.header .button-wrap {
+    display: flex;
+}
+
+.header .button-wrap .select-currency input {
+    background: transparent;
+    border: 0px;
+    width: 180px;
+}
+
+.header .register-button {
+    width: 100px;
+    height: 60px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5367ff;
+    border-radius: 10px;
+    margin-left: 10px;
+    opacity: .9;
+    transition: .3s;
+}
+
+.header .register-button:hover {
+    background-color: #5367FF;
+    color: white;
+    opacity: 1;
+}
+
+.header .login-button {
+    width: 100px;
+    height: 60px;
+    color: #5367FF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.header .login-button:hover {
+    background-color: #5367FF;
+    color: white;
+}
+
+.header .select-currency {
+    display: flex;
+    align-items: center;
+    width: 180px;
+}

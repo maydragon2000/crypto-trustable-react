@@ -1,0 +1,133 @@
+.market {
+    background-color: black;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.market .prices-by-marketcap {
+    width: 90%;
+    background: #121318;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.market .prices-by-marketcap .filter .left h1 {
+    color: white;
+    font-size: 33px;
+    margin-bottom: 20px;
+}
+
+.market .prices-by-marketcap .filter .left p {
+    color: #9295A6;
+    font-size: 14px;
+    width: 80%;
+}
+
+.market .prices-by-marketcap .filter .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.market .prices-by-marketcap .filter .right input {
+    color: #9295A6;
+    font-size: 14px;
+    background: transparent;
+    border: 0px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.market .prices-by-marketcap .filter .right input:focus-visible {
+    outline: none;
+}
+
+.market .prices-by-marketcap .filter .right .dropdown button {
+    color: #9295A6;
+    font-size: 14px;
+    background: transparent;
+    border: 0px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.market .prices-by-marketcap .filter .right .dropdown button:focus {
+    box-shadow: none;
+}
+
+.market .prices-by-marketcap .filter .right input::-webkit-calendar-picker-indicator {
+    background-image: url(/public/image/arrow-down.svg);
+    margin-bottom: -10px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap {
+    width: 23%;
+    display: flex;
+    position: relative;
+    background-color: #080808;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-name {
+    width: 50%;
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-name img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-name h5 {
+    font-size: 19px;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-name p {
+    display: none;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-price {
+    position: absolute;
+    padding-top: 50px;
+    display: flex;
+    width: 50%;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-price h5 {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-price p {
+    color: #03A66D;
+    font-size: 12px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-graph {
+    width: 50%;
+}
+
+.market .market-unlogin {
+    background-color: #121318;
+    width: 90%;
+    margin-top: 70px;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 70px;
+}
