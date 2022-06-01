@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css"
+import SearchDropdown from "../searchDropdown/SearchDropdown";
 const SelectCoin = ({ marketData, label, placeholder, initialId }) => {
-
-    const [spanClass, setSpanClass] = useState("");
-    const selectDropdownClick = () => {
-        if (spanClass === "")
-            setSpanClass("active");
-        else
-            setSpanClass("");
-    }
-    const [selectedId, setSelectedId] = useState(initialId);
-    const coinSelect = (index) => {
-        setSelectedId(index);
-        setSpanClass("");
-    }
+    let selectList = [];
+    useEffect(() => {
+        marketData.map((item, index) => {
+            selectList.push({ value: index + 1, label: item.name.logogram, image: item.id })
+        })
+    })
+    const [coinValue, setCoinValue] = useState(undefined);
     return (
         <>
             <section className="coin-selection-wrap">
@@ -22,25 +17,7 @@ const SelectCoin = ({ marketData, label, placeholder, initialId }) => {
                     <input type="text" placeholder={placeholder} />
                 </div>
                 <div className="select-wrap">
-                    <div className={`custom-select ${spanClass}`} id="custom-select">
-                        <span id="placeholder" onClick={() => selectDropdownClick()} className="placeholder">
-                            <span className="img-wrapper">
-                                <img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${marketData[selectedId].id}.png`} />
-                            </span>
-                            <span className="text"> {marketData[selectedId].name.logogram}</span>
-                        </span>
-                        <ul className="dropdown" id="dropdown">
-                            {
-                                marketData.map((item, index) =>
-                                    <li className="dd-item" key={index} onClick={() => coinSelect(index)} style={{ cursor: "pointer" }} >
-                                        <span className="img-wrapper">
-                                            <img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`} />
-                                        </span>
-                                        <span className="text">{`${item.name.fullName} (${item.name.logogram})`}</span>
-                                    </li>)
-                            }
-                        </ul>
-                    </div>
+                    <SearchDropdown image={marketData[initialId].id} type="coin" name={marketData[initialId].name.logogram} options={selectList} value={coinValue} setValue={setCoinValue} />
                 </div>
             </section>
         </>

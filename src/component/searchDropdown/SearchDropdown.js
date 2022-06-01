@@ -72,22 +72,13 @@ const Svg = p => (
     />
 );
 const { colors } = defaultTheme;
-const SearchDropdown = ({ name, type }) => {
-    const options = [
-        { value: '1', label: 'Item 1' },
-        { value: '2', label: 'Item 2' },
-        { value: '3', label: 'Item 3' },
-        { value: '4', label: 'Item 4' },
-        { value: '5', label: 'Item 5' },
-        { value: '6', label: 'Item 6' },
-        { value: '7', label: 'Item 7' },
-    ]
+const SearchDropdown = ({ name, type, options, value, setValue, image }) => {
+
     const selectStyles = {
         control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
         menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
     };
     const [isOpen, setIsOpen] = useState(false);
-    const [value, setValue] = useState(undefined);
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     }
@@ -101,7 +92,7 @@ const SearchDropdown = ({ name, type }) => {
                 isOpen={isOpen}
                 onClose={toggleOpen}
                 target={
-                    <Link to="" onClick={toggleOpen} isSelected={isOpen} className={`filter-category filter-category-${type}`} >{value ? `${value.label}` : name} <RiArrowDownSLine className="down" /><RiArrowUpSLine className="top" /></Link>
+                    <Link to="" onClick={toggleOpen} isSelected={isOpen} className={`filter-category filter-category-${type}`} ><img alt="" style={{ display: value ? "none" : "" }} src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${image}.png`} />{value ? <div><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${value.image}.png`} />{value.label}</div> : name} <RiArrowDownSLine className="down" /><RiArrowUpSLine className="top" /></Link>
                 }
             >
                 <Select
@@ -114,6 +105,7 @@ const SearchDropdown = ({ name, type }) => {
                     menuIsOpen
                     onChange={onSelectChange}
                     options={options}
+                    formatOptionLabel={item => (<div><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.image}.png`} />{item.label}</div>)}
                     placeholder="Search..."
                     styles={selectStyles}
                     tabSelectsValue={false}

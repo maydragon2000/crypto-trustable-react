@@ -511,6 +511,39 @@ const Market = () => {
         increase: true
     },
     ]);
+    const platformList = [
+        { value: "1", label: "Ethereum Ecosystem" },
+        { value: "2", label: "Asset-Backed Token" },
+        { value: "3", label: "TRON Ecosystem" },
+        { value: "4", label: "Polkadot" },
+        { value: "5", label: "Binance Chain" },
+        { value: "6", label: "BNB Smart Chain" },
+        { value: "7", label: "Polkadot Ecosystem" },
+        { value: "8", label: "HECO Ecosystem" },
+        { value: "9", label: "Avalanche Ecosystem" },
+        { value: "0", label: "Solana Ecosystem" },
+        { value: "11", label: "Wrapped Tokens" },
+        { value: "12", label: "Synthetics" },
+        { value: "13", label: "ETH 2.0 Staking" },
+        { value: "14", label: "Polygon Ecosystem" },
+        { value: "15", label: "Fantom Ecosystem" },
+        { value: "16", label: "Arbitrum Ecosystem" },
+        { value: "17", label: "IoTeX  Ecosystem" },
+        { value: "18", label: "Zilliqa  Ecosystem" },
+        { value: "19", label: "Cronos  Ecosystem" },
+        { value: "20", label: "Injective Ecosystem" },
+        { value: "21", label: "BNB Chain" },
+    ]
+    const [categoryValue, setCategoryValue] = useState(undefined);
+    const [algorithmValue, setAlgorithmValue] = useState(undefined);
+    const [platformValue, setPlatformValue] = useState(undefined);
+    const [industryValue, setIndustryValue] = useState(undefined);
+    const clearFilter = () => {
+        setCategoryValue(undefined);
+        setAlgorithmValue(undefined);
+        setPlatformValue(undefined);
+        setIndustryValue(undefined);
+    }
     return (
         <>
             <div className="market">
@@ -566,10 +599,10 @@ const Market = () => {
                         </div>
                         <div className="toolbar row">
                             {isAuth ? <div className="left-login col-6">
-                                <SearchDropdown type="login" name="Category" />
-                                <SearchDropdown type="login" name="Algorithm" />
-                                <SearchDropdown type="login" name="Platform" />
-                                <SearchDropdown type="login" name="Industry" />
+                                <SearchDropdown options={platformList} value={categoryValue} setValue={setCategoryValue} type="login" name="Category" />
+                                <SearchDropdown options={platformList} value={algorithmValue} setValue={setAlgorithmValue} type="login" name="Algorithm" />
+                                <SearchDropdown options={platformList} value={platformValue} setValue={setPlatformValue} type="login" name="Platform" />
+                                <SearchDropdown options={platformList} value={industryValue} setValue={setIndustryValue} type="login" name="Industry" />
                             </div> :
                                 <div className="left col-6">
                                     <SearchDropdown type="normal" name="Category" />
@@ -590,7 +623,7 @@ const Market = () => {
                                 <Link to=""><img className="icon-filter" alt="" src="image/icon-filter.svg" /></Link>
                                 <Link to=""><img className="clear-filter" alt="" src="image/clear-filter.svg" /></Link>
                                 <Link to=""><img className="customize" alt="" src="image/customize.svg" /> Customize</Link>
-                                <Link to=""><img className="close" alt="" src="image/close.svg" /> Clear Filter</Link>
+                                <Link onClick={clearFilter} to=""><img className="close" alt="" src="image/close.svg" /> Clear Filter</Link>
                             </div>
                         </div>
                         <MarketTable marketData={marketData} smallType={false} />
