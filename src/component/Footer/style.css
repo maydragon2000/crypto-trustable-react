@@ -48,6 +48,13 @@
     width: 80%;
 }
 
+.footer .first .social-network svg {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    color: #9295A6;
+}
+
 .footer .exchange,
 .footer .support,
 .footer .resource,
@@ -55,7 +62,7 @@
 .footer .company {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 15%;
 }
 
@@ -95,13 +102,13 @@
     text-decoration: none;
 }
 
-.footer .bottom .right {
+.footer .download-wrap {
     display: flex;
     justify-content: space-between;
 }
 
 
-.footer .bottom .right .download-item {
+.footer .download-item {
     display: flex;
     height: 42px;
     width: 23%;
@@ -109,25 +116,37 @@
     border-radius: 5px;
     background-color: #080808;
     cursor: pointer;
+    align-items: center;
 }
 
-.footer .bottom .right .download-item img {
+.footer .download-item:hover {
+    transition: .3s;
+    background-color: #5367FF;
+}
+
+.footer .download-item:hover p {
+    color: white;
+}
+
+.footer .download-item svg {
     width: 24px;
+    height: 24px;
+    color: white;
     margin-right: 10px;
 }
 
-.footer .bottom .right .download-item-inner {
+.footer .download-item-inner {
     display: flex;
     flex-direction: column;
 }
 
-.footer .bottom .right .download-item-inner p {
+.footer .download-item-inner p {
     font-size: 10px;
     margin-bottom: 0px;
     margin-right: 0px;
 }
 
-.footer .bottom .right .download-item-inner h5 {
+.footer .download-item-inner h5 {
     font-size: 12px;
     margin-bottom: 0px;
 }
@@ -147,4 +166,105 @@
     justify-content: center;
     margin-top: 20px;
     margin-right: 10px;
+}
+
+.footer .middle a svg {
+    width: 24px;
+    height: 24px;
+}
+
+.footer .navigation-login .first {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer .navigation-login .download-wrap {
+    width: 50%;
+}
+
+.footer .navigation-login .download-wrap p {
+    width: 100%;
+}
+
+.footer .navigation-login-inner {
+    display: flex;
+    margin-top: 30px;
+}
+
+.footer .navigation-login-inner .exchange,
+.footer .navigation-login-inner .support,
+.footer .navigation-login-inner .resource,
+.footer .navigation-login-inner .company {
+    width: 20%;
+}
+
+.footer .newsletter .email-wrap {
+    width: 320px;
+    height: 50px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(138, 200, 255, 0.15);
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .newsletter .email-wrap input {
+    width: 90%;
+    background: transparent;
+    border: 0px;
+    color: #AEB1BF;
+}
+
+.footer .newsletter .email-wrap input:focus-visible {
+    outline: none;
+}
+
+.footer .newsletter button {
+    width: 77px;
+    height: 50px;
+    background: #5367FF;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.footer .newsletter h4 {
+    font-size: 18px;
+    color: #CCCED9;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    width: 280px;
+}
+
+.footer .newsletter .payment-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer .newsletter .payment {
+    width: 91px;
+    height: 50px;
+    background: #080808;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.social-network-login {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-network-login svg {
+    margin-right: 20px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    cursor: pointer;
 }

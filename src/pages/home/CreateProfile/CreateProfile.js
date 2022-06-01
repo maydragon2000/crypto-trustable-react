@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css"
+import { RiArrowRightSLine } from "react-icons/ri"
 const CreateProfile = () => {
     return (
         <>
@@ -12,7 +13,9 @@ const CreateProfile = () => {
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                         <div className="link-wrap">
                             <Link to="">Start Trading</Link>
-                            <Link to=""><img alt="" src="image/arrow-button.svg" /></Link>
+                            <Link to="">
+                                <RiArrowRightSLine />
+                            </Link>
                         </div>
                     </div>
                     <div className="col-6 right">

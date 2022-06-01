@@ -49,6 +49,11 @@
     background: transparent;
     border: 0px;
     width: 180px;
+    color: #6C7080;
+}
+
+.header .button-wrap .select-currency input::placeholder {
+    color: #6C7080;
 }
 
 .header .register-button {
@@ -94,4 +99,72 @@
     display: flex;
     align-items: center;
     width: 180px;
+}
+
+.header .trade-history-button {
+    text-decoration: none;
+    width: 180px;
+    height: 60px;
+    background: #080808;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6C7080;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.header .trade-history-button img {
+    width: 24px;
+    margin-right: 5px;
+}
+
+.header .wallet-button {
+    text-decoration: none;
+    width: 130px;
+    height: 60px;
+    background: #080808;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6C7080;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.header .wallet-button img {
+    width: 24px;
+    margin-right: 5px;
+}
+
+.header .user-picture img {
+    width: 60px;
+    margin-right: 20px;
+}
+
+.header .dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .dropdown button {
+    background: transparent !important;
+    border: 0px;
+    color: #6C7080;
+    font-size: 16px;
+}
+
+.header .dropdown button:focus {
+    box-shadow: none !important;
+}
+
+.header .dropdown .dropdown-toggle::after {
+    position: absolute;
+    top: 28px;
+    margin-left: 10px;
 }

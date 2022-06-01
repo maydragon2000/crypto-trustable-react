@@ -1,0 +1,51 @@
+.filter-category-normal {
+    font-size: 16px;
+    color: #6C7080;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.filter-category svg {
+    margin-left: 5px;
+    margin-bottom: -5px;
+}
+
+.filter-category .top {
+    display: none;
+}
+
+.filter-category-normal:focus {
+    color: #5367FF;
+    text-decoration: underline;
+    text-underline-offset: 30px;
+}
+
+.filter-category:focus .down {
+    display: none;
+}
+
+.filter-category:focus .top {
+    display: block;
+}
+
+.filter-category-login {
+    font-size: 16px;
+    color: #6C7080;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    width: 140px;
+    height: 52px;
+    background: #080808;
+    border-radius: 5px;
+}
+
+.filter-category-login:focus {
+    color: white;
+    background: #5367FF;
+}

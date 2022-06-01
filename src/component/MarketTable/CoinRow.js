@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from 'react-chartjs-2';
+import { useNavigate } from "react-router-dom";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -10,7 +11,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-const CoinRow = ({ item, index }) => {
+const CoinRow = ({ item, index, smallType }) => {
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -36,9 +37,7 @@ const CoinRow = ({ item, index }) => {
             }
         },
     };
-
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
     const data = {
         labels,
         datasets: [
@@ -51,20 +50,24 @@ const CoinRow = ({ item, index }) => {
             },
         ],
     };
+    const navigate = useNavigate();
+    const coinClick = () => {
+        navigate("/detail");
+    }
     return (
         <>
-            <tr>
-                <td className="index"><img alt="" src="image/market/star.svg" /> {index + 1}</td>
+            <tr onClick={() => coinClick()}>
+                <td style={{ display: smallType ? "none" : "" }} className="index"><img alt="" src="image/market/star.svg" /> {index + 1}</td>
                 <td className="name">
-                    <img alt="" src={`image/market/${item.name.image}.svg `} />
+                    <img style={{ borderRadius: "100px" }} alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`} />
                     <h5>{item.name.fullName}</h5>
                     <p>{item.name.logogram}</p>
                 </td>
                 <td className="price">{item.price}</td>
                 <td className="percent" style={{ color: item.increase ? "#03A66D" : "#DC2626" }} >{item.percent}</td>
-                <td className="high-price">{item.highPrice}</td>
-                <td className="low-price">{item.lowPrice}</td>
-                <td className="chart"><Line height={40} width={114} options={options} data={data} /></td>
+                <td style={{ display: smallType ? "none" : "" }} className="high-price">{item.highPrice}</td>
+                <td style={{ display: smallType ? "none" : "" }} className="low-price">{item.lowPrice}</td>
+                <td style={{ display: smallType ? "none" : "" }} className="chart"><Line height={40} width={114} options={options} data={data} /></td>
             </tr>
         </>
     )

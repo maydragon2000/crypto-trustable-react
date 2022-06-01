@@ -1,159 +1,3 @@
-.filter-bar {
-    padding-bottom: 20px;
-    border-bottom: solid 1px gray;
-}
-
-.filter-bar button {
-    background: transparent;
-    width: 140px;
-    height: 50px;
-    border: solid 2px #44454c;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #9295A6;
-    margin-right: 20px;
-}
-
-.filter-bar button:focus {
-    color: #5367FF;
-    border-color: #0169d9;
-}
-
-.filter-bar .right {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center
-}
-
-.filter-bar .right .search-input-wrap {
-    width: 300px;
-    height: 50px;
-    padding: 13px 10px;
-    border: solid 2px #44454c;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.filter-bar .right .search-input-wrap img {
-    width: 24px;
-}
-
-.filter-bar .right .search-input-wrap input {
-    background: transparent;
-    border: 0px;
-    color: #9295A6;
-    margin-left: 20px;
-    font-size: 14px;
-    width: 80%;
-}
-
-.filter-bar .right .search-input-wrap input:focus-visible {
-    outline: none;
-}
-
-.filter-bar .right .search-input-wrap input:focus {
-    box-shadow: none;
-}
-
-.filter-bar .right .search-input-wrap input::placeholder {
-    color: #9295A6;
-}
-
-.market .toolbar {
-    padding: 30px 0px;
-    border-bottom: solid 1px gray;
-}
-
-.market .toolbar .left {
-    display: flex;
-}
-
-.market .toolbar .left a {
-    font-size: 16px;
-    color: #6C7080;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-}
-
-.market .toolbar .left a img {
-    margin-left: 5px;
-    margin-bottom: -5px;
-}
-
-.market .toolbar .left a .top {
-    display: none;
-}
-
-.market .toolbar .left a:focus {
-    color: #5367FF;
-    text-decoration: underline;
-    text-underline-offset: 30px;
-}
-
-.market .toolbar .left a:focus img {
-    color: #5367FF;
-}
-
-.market .toolbar .left a:focus .down {
-    display: none;
-}
-
-.market .toolbar .left a:focus .top {
-    display: block;
-}
-
-.market .toolbar .right {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.market .toolbar .right select {
-    width: 83px;
-    height: 34px;
-    background: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9295A6;
-    font-size: 14px;
-}
-
-.market .toolbar .right select:focus-visible {
-    outline: none;
-}
-
-.market .toolbar .right .close {
-    width: 12px;
-    margin-right: 10px;
-}
-
-.market .toolbar .right .icon-filter,
-.market .toolbar .right .clear-filter {
-    width: 18px;
-}
-
-
-.market .toolbar .right .customize {
-    width: 20px;
-    margin-right: 10px;
-}
-
-.market .toolbar .right a {
-    text-decoration: none;
-    color: #9295A6;
-    font-size: 14px;
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .market-table thead th {
     color: #6C7080;
     font-size: 14px;
@@ -165,15 +9,27 @@
     width: 5%;
 }
 
-.market-table thead .name {
+.market-table-normal thead .name {
     width: 25%;
 }
 
-.market-table thead .price,
-.market-table thead .percent,
-.market-table thead .high-price,
-.market-table thead .low-price {
+.market-table-normal thead .price,
+.market-table-normal thead .percent,
+.market-table-normal thead .high-price,
+.market-table-normal thead .low-price {
     width: 15%;
+}
+
+.market-table-normal thead .chart {
+    width: 10%;
+}
+
+.market-table tbody tr {
+    cursor: pointer;
+}
+
+.market-table tbody tr:hover {
+    background-color: #080808;
 }
 
 .market-table thead th img {
@@ -210,6 +66,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.market-table-normal tbody .name {
     width: 25%;
 }
 
@@ -241,15 +100,27 @@
 .market-table tbody tr .price,
 .market-table tbody tr .high-price,
 .market-table tbody tr .low-price {
-    width: 15%;
     color: white;
     font-size: 16px;
 }
 
-.market-table tbody tr .percent {
+.market-table-normal tbody tr .price,
+.market-table-normal tbody tr .high-price,
+.market-table-normal tbody tr .low-price {
     width: 15%;
+}
+
+.market-table-normal tbody .chart {
+    width: 10%;
+}
+
+.market-table tbody tr .percent {
     color: #03A66D;
     font-size: 16px;
+}
+
+.market-table-normal tbody tr .percent {
+    width: 15%;
 }
 
 .market-table-footer {
@@ -275,4 +146,77 @@
     color: #5367FF;
     border: solid 1px #5367FF;
     border-radius: 5px;
+}
+
+.filter-bar .left h5 {
+    color: white;
+    font-size: 33px;
+    margin-bottom: 20px;
+}
+
+.filter-bar .left p {
+    color: #9295A6;
+    font-size: 14px;
+    width: 80%;
+}
+
+.market .toolbar .left-login {
+    display: flex;
+}
+
+
+.market-table-small thead .name {
+    width: 50%;
+}
+
+.market-table-small thead .price {
+    width: 25%;
+}
+
+.market-table-small thead .percent {
+    width: 25%;
+}
+
+.market-table-small tbody {
+    display: block;
+    height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.market-table-small tbody tr {
+    height: 56px;
+}
+
+.market-table-small tbody tr td {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.market-table-small tbody .name {
+    width: 50%;
+}
+
+.market-table-small tbody .price {
+    width: 25%;
+}
+
+.market-table-small tbody {
+    display: block;
+    height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.market-table tbody tr {
+    height: 56px;
+}
+
+.market-table-small tbody .name {
+    width: 50%;
+}
+
+.market-table-small tbody .price {
+    width: 25%;
 }

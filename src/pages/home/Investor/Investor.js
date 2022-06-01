@@ -14,7 +14,6 @@ const Investor = () => {
                     <img alt="" src="image/investor4.svg" />
                     <img alt="" src="image/investor5.svg" />
                     <img alt="" src="image/investor6.svg" />
-
                 </div>
             </div>
         </>

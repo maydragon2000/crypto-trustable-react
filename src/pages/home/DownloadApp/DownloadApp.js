@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css"
+import { FaWindows, FaAppStoreIos, FaApple, FaGooglePlay } from "react-icons/fa"
 const DownloadApp = () => {
     return (
         <>
@@ -14,28 +15,28 @@ const DownloadApp = () => {
                     <div className="download-items">
                         <div className="download-item">
                             <div className="download-item-inner">
-                                <img alt="" src="image/win10.svg" />
+                                <FaWindows />
                                 <h5>Windows</h5>
                                 <p>Download PC-Client</p>
                             </div>
                         </div>
                         <div className="download-item">
                             <div className="download-item-inner">
-                                <img alt="" src="image/window.svg" />
+                                <FaAppStoreIos />
                                 <h5>Windows</h5>
                                 <p>Download on the</p>
                             </div>
                         </div>
                         <div className="download-item">
                             <div className="download-item-inner">
-                                <img alt="" src="image/MacOs.svg" />
+                                <FaApple />
                                 <h5>Mac OS</h5>
                                 <p>Download for the</p>
                             </div>
                         </div>
                         <div className="download-item">
                             <div className="download-item-inner">
-                                <img alt="" src="image/GooglePlay.svg" />
+                                <FaGooglePlay />
                                 <h5>Google Play</h5>
                                 <p>Get in on</p>
                             </div>

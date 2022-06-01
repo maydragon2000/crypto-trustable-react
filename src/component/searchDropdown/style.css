@@ -1,0 +1,7 @@
+.selectinput {
+    position: absolute !important;
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 5px;
+    padding: 20px;
+}

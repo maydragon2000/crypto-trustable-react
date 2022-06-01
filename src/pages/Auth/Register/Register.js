@@ -16,7 +16,7 @@ const Register = () => {
                 <div className="register-inner">
                     <h1>Create an account</h1>
                     <div className="email-wrap">
-                        <input name="aaa" placeholder="Enter Email or Phone Number" />
+                        <input name="aaa" placeholder="Enter Email" />
                     </div>
                     <div className="password-wrap">
                         <input type={passwordShow ? "text" : "password"} placeholder="password" />
@@ -28,11 +28,10 @@ const Register = () => {
                     </div>
                     <div className="register-agree-wrap">
                         <input type="checkbox" />
-                        <p>By Register i agree that i’m 18 years of age or older, ot the<Link to="/password-recover">User Agreements, Privacy Policy, Cookie Policy.</Link></p>
-
+                        <p>By Register i agree that i’m 18 years of age or older, ot the<Link to="">User Agreements, Privacy Policy, Cookie Policy.</Link></p>
                     </div>
                     <div>
-                        <Link to="" className="sign-in-button">Register</Link>
+                        <Link to="/SecurityCode" className="sign-in-button">Register</Link>
                     </div>
                     <div className="go-login-wrap">
                         <h5>Already have an account?</h5>

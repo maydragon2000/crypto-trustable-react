@@ -53,9 +53,16 @@
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.login-inner .error {
+    position: absolute;
+    margin-top: 110px;
+    color: red;
+    margin-left: -20px;
 }
 
 .login-inner .email-wrap input {
@@ -83,9 +90,9 @@ input:-webkit-autofill:focus {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
+    position: relative;
 }
 
 .login-inner .password-wrap input {
@@ -133,6 +140,7 @@ input:-webkit-autofill:focus {
     border-radius: 10px;
     font-size: 16px;
     margin: 50px 0px;
+    border: 0px;
     opacity: .9;
 }
 

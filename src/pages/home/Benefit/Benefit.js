@@ -51,7 +51,7 @@ const Benefit = () => {
                 <p className="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
                 <div className="services">
                     {
-                        services.map((item, index) => <SingleServiceBenefit item={item} index={index} />)
+                        services.map((item, index) => <SingleServiceBenefit item={item} key={index} />)
                     }
                 </div>
             </div>

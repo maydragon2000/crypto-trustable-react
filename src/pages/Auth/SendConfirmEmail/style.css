@@ -1,0 +1,110 @@
+.send-confirm-email {
+    height: 100vh;
+    background: black;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-confirm-email .logo {
+    position: absolute;
+    top: 50px;
+    right: 200px;
+}
+
+.send-confirm-email .logo a {
+    width: 180px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+}
+
+.send-confirm-email .logo a img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.send-confirm-email .logo a p {
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.send-confirm-email-inner {
+    width: 562px;
+    height: 50%;
+}
+
+.send-confirm-email-inner h1 {
+    font-size: 39px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.send-confirm-email .sub-title {
+    display: flex;
+    justify-content: center;
+}
+
+.send-confirm-email .sub-title p {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    width: 90%;
+    margin-bottom: 70px;
+}
+
+.send-confirm-email p {
+    font-size: 16px;
+    color: #5367FF;
+    margin-bottom: 20px;
+}
+
+.send-confirm-email-inner .email-wrap {
+    width: 562px;
+    height: 62px;
+    background-color: #121318;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.send-confirm-email-inner .email-wrap input {
+    background: transparent;
+    width: 100%;
+    border: 0px;
+    font-size: 16px;
+    color: white;
+}
+
+.send-confirm-email-inner .email-wrap input:focus-visible {
+    outline: none;
+}
+
+.send-confirm-email-inner .send-confirm-code-button {
+    width: 100%;
+    display: flex;
+    height: 60px;
+    background-color: #5367FF;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 50px 0px;
+    opacity: .9;
+}
+
+.send-confirm-email-inner .send-confirm-code-button:hover {
+    opacity: 1;
+}
