@@ -92,7 +92,7 @@ const SearchDropdown = ({ name, type, options, value, setValue, image }) => {
                 isOpen={isOpen}
                 onClose={toggleOpen}
                 target={
-                    <Link to="" onClick={toggleOpen} isSelected={isOpen} className={`filter-category filter-category-${type}`} ><img alt="" style={{ display: value ? "none" : "" }} src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${image}.png`} />{value ? <div><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${value.image}.png`} />{value.label}</div> : name} <RiArrowDownSLine className="down" /><RiArrowUpSLine className="top" /></Link>
+                    <Link to="" onClick={toggleOpen} className={`filter-category filter-category-${type}`} ><img alt="" style={{ display: value ? "none" : "" }} src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${image}.png`} />{value ? <div><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${value.image}.png`} />{value.label}</div> : name} <RiArrowDownSLine className="down" /><RiArrowUpSLine className="top" /></Link>
                 }
             >
                 <Select

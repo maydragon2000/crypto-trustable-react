@@ -67,7 +67,10 @@ const CoinRow = ({ item, index, smallType }) => {
                 <td className="percent" style={{ color: item.increase ? "#03A66D" : "#DC2626" }} >{item.percent}</td>
                 <td style={{ display: smallType ? "none" : "" }} className="high-price">{item.highPrice}</td>
                 <td style={{ display: smallType ? "none" : "" }} className="low-price">{item.lowPrice}</td>
-                <td style={{ display: smallType ? "none" : "" }} className="chart"><Line height={40} width={114} options={options} data={data} /></td>
+                <td style={{ display: smallType ? "none" : "" }} className="chart">
+                    <img style={{ display: item.increase ? "" : "none" }} className="up" alt="" src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${item.id}.svg`} />
+                    <img style={{ display: item.increase ? "none" : "" }} className="down" alt="" src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${item.id}.svg`} />
+                </td>
             </tr>
         </>
     )

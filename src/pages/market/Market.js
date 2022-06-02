@@ -605,10 +605,10 @@ const Market = () => {
                                 <SearchDropdown options={platformList} value={industryValue} setValue={setIndustryValue} type="login" name="Industry" />
                             </div> :
                                 <div className="left col-6">
-                                    <SearchDropdown type="normal" name="Category" />
-                                    <SearchDropdown type="normal" name="Algorithm" />
-                                    <SearchDropdown type="normal" name="Platform" />
-                                    <SearchDropdown type="normal" name="Industry" />
+                                    <SearchDropdown options={platformList} value={categoryValue} setValue={setCategoryValue} type="normal" name="Category" />
+                                    <SearchDropdown options={platformList} value={algorithmValue} setValue={setAlgorithmValue} type="normal" name="Algorithm" />
+                                    <SearchDropdown options={platformList} value={platformValue} setValue={setPlatformValue} type="normal" name="Platform" />
+                                    <SearchDropdown options={platformList} value={industryValue} setValue={setIndustryValue} type="normal" name="Industry" />
                                 </div>
                             }
                             <div className="right col-6">

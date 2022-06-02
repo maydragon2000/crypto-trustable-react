@@ -67,14 +67,19 @@
     justify-content: space-between;
 }
 
-.market .prices-by-marketcap .topcoin-wrap .coin-wrap {
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap-animation {
     width: 23%;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap {
     display: flex;
     position: relative;
     background-color: #080808;
     border-radius: 10px;
     padding: 20px;
 }
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap:hover {}
 
 .market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-name {
     width: 50%;
@@ -121,6 +126,11 @@
 
 .market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-graph {
     width: 50%;
+    margin: 10px 0px;
+}
+
+.market .prices-by-marketcap .topcoin-wrap .coin-wrap .coin-graph .up {
+    filter: invert(47%) sepia(78%) saturate(1622%) hue-rotate(183deg) brightness(101%) contrast(101%);
 }
 
 .market .market-unlogin {

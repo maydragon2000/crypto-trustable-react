@@ -19,8 +19,11 @@
     margin-top: 50px;
 }
 
-.home-top-market .coin-wrap {
+.home-top-market .coin-wrap-animation {
     width: 23%;
+}
+
+.home-top-market .coin-wrap {
     display: flex;
     flex-direction: column;
     background: #121318;
@@ -78,4 +81,12 @@
 .home-top-market .coin-wrap .coin-price img {
     margin-left: 5px;
     margin-top: -5px;
+}
+
+.home-top-market .coin-wrap .coin-graph img {
+    width: 90%;
+}
+
+.home-top-market .coin-wrap .coin-graph .up {
+    filter: invert(47%) sepia(78%) saturate(1622%) hue-rotate(183deg) brightness(101%) contrast(101%);
 }

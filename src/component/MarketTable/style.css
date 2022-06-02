@@ -114,6 +114,16 @@
     width: 10%;
 }
 
+.market-table-normal tbody .chart .up {
+    filter: invert(47%) sepia(78%) saturate(1622%) hue-rotate(183deg) brightness(101%) contrast(101%);
+    width: 100%;
+}
+
+.market-table-normal tbody .chart .down {
+    filter: invert(30%) sepia(85%) saturate(2452%) hue-rotate(344deg) brightness(86%) contrast(100%);
+    width: 100%;
+}
+
 .market-table tbody tr .percent {
     color: #03A66D;
     font-size: 16px;
