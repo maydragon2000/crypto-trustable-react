@@ -115,12 +115,12 @@
 }
 
 .market-table-normal tbody .chart .up {
-    filter: invert(47%) sepia(78%) saturate(1622%) hue-rotate(183deg) brightness(101%) contrast(101%);
+    filter: brightness(0%) saturate(100%) invert(63%) sepia(91%) saturate(4256%) hue-rotate(87deg) brightness(125%) contrast(119%);
     width: 100%;
 }
 
 .market-table-normal tbody .chart .down {
-    filter: invert(30%) sepia(85%) saturate(2452%) hue-rotate(344deg) brightness(86%) contrast(100%);
+    filter: saturate(100%) brightness(0%) invert(23%) sepia(98%) saturate(6806%) hue-rotate(357deg) brightness(101%) contrast(114%);
     width: 100%;
 }
 

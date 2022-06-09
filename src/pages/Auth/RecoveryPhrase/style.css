@@ -1,4 +1,4 @@
-.send-confirm-email {
+.recovery-phrase {
     height: 100vh;
     background: black;
     min-height: 700px;
@@ -8,13 +8,13 @@
     justify-content: center;
 }
 
-.send-confirm-email .logo {
+.recovery-phrase .logo {
     position: absolute;
     top: 50px;
     right: 200px;
 }
 
-.send-confirm-email .logo a {
+.recovery-phrase .logo a {
     width: 180px;
     height: 40px;
     display: flex;
@@ -24,35 +24,36 @@
     color: white;
 }
 
-.send-confirm-email .logo a img {
+.recovery-phrase .logo a img {
     width: 40px;
     margin-right: 10px;
 }
 
-.send-confirm-email .logo a p {
+.recovery-phrase .logo a p {
     margin-bottom: 0px;
     font-size: 17px;
     font-weight: 500;
 }
 
-.send-confirm-email-inner {
-    width: 562px;
-    height: 50%;
+.recovery-phrase-inner {
+    width: 80%;
+    height: 60%;
 }
 
-.send-confirm-email-inner h1 {
+.recovery-phrase-inner h1 {
     font-size: 39px;
     color: white;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.send-confirm-email .sub-title {
+.recovery-phrase .sub-title {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.send-confirm-email .sub-title p {
+.recovery-phrase .sub-title p {
     color: white;
     font-size: 16px;
     text-align: center;
@@ -60,38 +61,52 @@
     margin-bottom: 70px;
 }
 
-.send-confirm-email p {
-    font-size: 16px;
-    color: #5367FF;
-    margin-bottom: 20px;
+
+
+.recovery-phrase-inner .phrase-list {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.send-confirm-email-inner .email-wrap {
-    width: 562px;
-    height: 62px;
-    background-color: #121318;
-    border-radius: 8px;
+.recovery-phrase-inner .phrase-list div {
+    width: 23%;
+    height: 80px;
+    background: #121318;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
-.send-confirm-email-inner .email-wrap input {
-    background: transparent;
-    width: 100%;
-    border: 0px;
-    font-size: 16px;
+.recovery-phrase-inner .phrase-list div p {
+    margin-bottom: 0px;
     color: white;
+    font-size: 24px;
 }
 
-.send-confirm-email-inner .email-wrap input:focus-visible {
+.recovery-phrase-inner .phrase-list .code-input-wrap input:focus-visible {
     outline: none;
 }
 
-.send-confirm-email-inner .send-confirm-code-button {
-    width: 100%;
+.warning {
+    color: white;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.warning label {
+    color: yellow;
+}
+
+.recovery-phrase-button-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.recovery-phrase-inner .recovery-phrase-button {
+    width: 300px;
     display: flex;
     height: 60px;
     background-color: #5367FF;
@@ -105,6 +120,6 @@
     opacity: .9;
 }
 
-.send-confirm-email-inner .send-confirm-code-button:hover {
+.recovery-phrase-inner .recovery-phrase-button:hover {
     opacity: 1;
 }

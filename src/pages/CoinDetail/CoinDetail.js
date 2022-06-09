@@ -217,7 +217,7 @@ const CoinDetail = () => {
                             </TabList>
                             <TabPanel>
                                 <div className="buy-content">
-                                    <div className="first row">
+                                    {/* <div className="first row">
                                         <div className="col-6">
                                             <button onClick={() => limitChecked()}>
                                                 <input type="radio" readOnly checked={LimitCheck} name="fav_language" />
@@ -234,7 +234,7 @@ const CoinDetail = () => {
                                             </button>
                                             <p><img alt="" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" />$38,447.54</p>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <SelectCoin label="Quantity(BTC)" placeholder="$0" marketData={marketData} initialId={0} />
 
                                     <div className="coin-selection-wrap ">
@@ -249,7 +249,7 @@ const CoinDetail = () => {
                             </TabPanel>
                             <TabPanel>
                                 <div className="buy-content">
-                                    <div className="first row">
+                                    {/* <div className="first row">
                                         <div className="col-6">
                                             <button onClick={() => limitChecked()}>
                                                 <input type="radio" readOnly checked={LimitCheck} name="fav_language" />
@@ -266,7 +266,7 @@ const CoinDetail = () => {
                                             </button>
                                             <p><img alt="" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" />$38,447.54</p>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <SelectCoin label="Quantity(BTC)" placeholder="$0" marketData={marketData} initialId={0} />
 
                                     <div className="coin-selection-wrap ">

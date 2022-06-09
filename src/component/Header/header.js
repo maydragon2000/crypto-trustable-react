@@ -18,6 +18,9 @@ const Header = (props) => {
         navigate("/");
         dispatch(logout());
     }
+    const goProfile = () => {
+        navigate("/profile")
+    }
     return (
         <>
             <div id="header" className="header">
@@ -29,7 +32,7 @@ const Header = (props) => {
                     <div className="navlink-wrap">
                         <NavLink href="market">Market</NavLink>
                         <NavLink href="watchlist" >Watchlist</NavLink>
-                        <NavLink>Portfolio</NavLink>
+                        {/* <NavLink>Portfolio</NavLink> */}
                         <NavLink>Learn</NavLink>
                     </div>
                     <div className="button-wrap">
@@ -38,7 +41,7 @@ const Header = (props) => {
                         <Link to="" style={{ display: !isAuth ? "none" : "flex" }} className="wallet-button"><img alt="" src="image/wallet.svg" /> Wallet</Link>
                         <Link to="" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src="image/user.svg" /></Link>
                         <DropdownButton style={{ display: !isAuth ? "none" : "flex" }} id="dropdown-item-button" title="Allie Grater">
-                            <Dropdown.Item as="button">Profile</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={goProfile}>Profile</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => logOut()}>Log Out</Dropdown.Item>
                         </DropdownButton>
                         <Link to="login" style={{ display: isAuth ? "none" : "flex" }} className="login-button">Sign in</Link>

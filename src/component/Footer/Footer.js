@@ -88,8 +88,8 @@ const Footer = (props) => {
                                 </div>
                                 <button>Send</button>
                             </div>
-                            <h4>We accept following payment systems</h4>
-                            <div className="payment-wrap">
+                            {/* <h4>We accept following payment systems</h4> */}
+                            {/* <div className="payment-wrap">
                                 <div className="payment">
                                     <img alt="" src="image/footer/paypal.svg" />
                                 </div>
@@ -102,7 +102,7 @@ const Footer = (props) => {
                                 <div className="payment">
                                     <img alt="" src="image/footer/visa.svg" />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div> :

@@ -248,7 +248,7 @@
 
 .currencies .currency-right {
     width: 28%;
-    height: 700px;
+    height: 560px;
     background-color: #121318;
     border-radius: 10px;
     padding: 40px;
@@ -359,4 +359,8 @@ input[type=radio] {
 
 .buy-crypto .buy-button:hover {
     opacity: 1;
+}
+
+.buy-content {
+    margin-top: 80px;
 }

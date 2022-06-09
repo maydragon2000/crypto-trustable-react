@@ -11,7 +11,7 @@ const Instant = () => {
                         <h1 style={{ color: "#5367FF" }}>Crypto Instantly</h1>
                     </div>
                     <p >Welcome to Crypto Trustable  . Here you can send , recieve , and exchange crypto very easy !</p>
-                    <Link to="">Let’s Go</Link>
+                    <Link to="market">Let’s Go</Link>
                     {/* <div className="logo-wrap row">
                         <div className="col-5 d-flex" style={{ flexDirection: "column", alignItems: "flex-start" }}>
                             <img className="logo1" alt="" src="image/instant-logo1.svg" />

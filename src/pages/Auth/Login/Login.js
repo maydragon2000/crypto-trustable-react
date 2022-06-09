@@ -21,7 +21,7 @@ const Login = (props) => {
     };
 
     const validationSchema = Yup.object({
-        email: Yup.string().email("Invalid email address").required("Email is Required"),
+        username: Yup.string().required("username is Required"),
         password: Yup.string().min(5).max(255).required("Password is Required"),
     });
 
@@ -61,13 +61,12 @@ const Login = (props) => {
                                 <Form>
                                     <h1>Sign In</h1>
                                     <div className="email-wrap">
-                                        {/* <input name="aaa" type="email" placeholder="email" /> */}
                                         <Field
-                                            name="email"
-                                            type="email"
-                                            placeholder="email"
+                                            name="username"
+                                            type="text"
+                                            placeholder="username"
                                         />
-                                        <ErrorMessage name="email" component={Error} />
+                                        <ErrorMessage name="username" component={Error} />
                                     </div>
                                     <div className="password-wrap">
                                         <Field
@@ -80,7 +79,7 @@ const Login = (props) => {
                                     </div>
                                     <div className="forgot-password-wrap">
                                         <p>Scan to login</p>
-                                        <Link to="/password-recover">Forgot Password?</Link>
+                                        <Link to="/confirm-recovery-phrase">Forgot Password?</Link>
                                     </div>
                                     <div>
                                         <button type="submit" disabled={!formik.dirty || !formik.isValid || loading} className="sign-in-button btn btn-primary">Sign in</button>

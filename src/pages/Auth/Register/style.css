@@ -128,7 +128,7 @@ input:-webkit-autofill:focus {
     margin-right: 10px;
 }
 
-.register-inner .sign-in-button {
+.register-inner .sign-up-button {
     width: 100%;
     display: flex;
     height: 60px;
@@ -143,7 +143,7 @@ input:-webkit-autofill:focus {
     opacity: .9;
 }
 
-.register-inner .sign-in-button:hover {
+.register-inner .sign-up-button:hover {
     opacity: 1;
 }
 

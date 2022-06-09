@@ -1,7 +1,7 @@
 .coin-selection-wrap {
     display: flex;
     position: relative;
-    margin-top: 30px;
+    margin-top: 50px;
     align-items: center;
     height: 70px;
     border: 1px solid rgba(204, 206, 217, 0.15);

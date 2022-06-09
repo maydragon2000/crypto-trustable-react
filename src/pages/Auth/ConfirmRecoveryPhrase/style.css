@@ -1,4 +1,4 @@
-.confirm-security-code {
+.confirm-recovery-phrase {
     height: 100vh;
     background: black;
     min-height: 700px;
@@ -8,13 +8,13 @@
     justify-content: center;
 }
 
-.confirm-security-code .logo {
+.confirm-recovery-phrase .logo {
     position: absolute;
     top: 50px;
     right: 200px;
 }
 
-.confirm-security-code .logo a {
+.confirm-recovery-phrase .logo a {
     width: 180px;
     height: 40px;
     display: flex;
@@ -24,75 +24,68 @@
     color: white;
 }
 
-.confirm-security-code .logo a img {
+.confirm-recovery-phrase .logo a img {
     width: 40px;
     margin-right: 10px;
 }
 
-.confirm-security-code .logo a p {
+.confirm-recovery-phrase .logo a p {
     margin-bottom: 0px;
     font-size: 17px;
     font-weight: 500;
 }
 
-.confirm-security-code-inner {
-    width: 562px;
-    height: 50%;
+.confirm-recovery-phrase-inner {
+    height: 60%;
+    width: 80%;
 }
 
-.confirm-security-code-inner h1 {
+.confirm-recovery-phrase-inner h1 {
     font-size: 39px;
     color: white;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.confirm-security-code .sub-title {
-    display: flex;
-    justify-content: center;
-}
-
-.confirm-security-code .sub-title p {
-    color: white;
+.confirm-recovery-phrase-inner p {
     font-size: 16px;
-    text-align: center;
-    width: 90%;
+    color: white;
     margin-bottom: 70px;
+    text-align: center;
 }
 
-.confirm-security-code-inner .codeinput-list {
-    justify-content: center;
-    display: flex;
-}
-
-.confirm-security-code-inner .codeinput-list .code-input-wrap {
-    width: 62px;
-    height: 62px;
-    background: #121318;
-    padding: 20px;
+.confirm-recovery-phrase-inner .email-wrap {
+    width: 23%;
+    height: 80px;
+    background-color: #121318;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 30px;
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
-.confirm-security-code-inner .codeinput-list .code-input-wrap input {
-    width: 30px;
-    font-size: 16px;
+.confirm-recovery-phrase-inner .email-wrap input {
     background: transparent;
-    border: 0px px;
-    color: white;
+    width: 100%;
     border: 0px;
-    text-align: center;
+    font-size: 20px;
+    color: white;
 }
 
-.confirm-security-code-inner .codeinput-list .code-input-wrap input:focus-visible {
+.confirm-recovery-phrase-inner .email-wrap input:focus-visible {
     outline: none;
 }
 
-.confirm-security-code-inner .code-confirm-button {
+.confirm-recovery-phrase-inner .confirm-recovery-phrase-button-wrap {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.confirm-recovery-phrase-inner .confirm-recovery-phrase-button {
+    width: 500px;
     display: flex;
     height: 60px;
     background-color: #5367FF;
@@ -106,6 +99,12 @@
     opacity: .9;
 }
 
-.confirm-security-code-inner .code-confirm-button:hover {
+.confirm-recovery-phrase-inner .confirm-recovery-phrase-button:hover {
     opacity: 1;
+}
+
+.phrase-list-wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

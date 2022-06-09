@@ -88,5 +88,5 @@
 }
 
 .home-top-market .coin-wrap .coin-graph .up {
-    filter: invert(47%) sepia(78%) saturate(1622%) hue-rotate(183deg) brightness(101%) contrast(101%);
+    filter: brightness(0%) saturate(100%) invert(63%) sepia(91%) saturate(4256%) hue-rotate(87deg) brightness(125%) contrast(119%);
 }
