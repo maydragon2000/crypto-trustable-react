@@ -1,14 +1,35 @@
-import React, { useEffect, useState } from "react"
-import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom"
+import React from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+import { attemptRegister } from "../../../store/thunks/auth";
 import wordData from "./words.json";
 import "./style.css"
 const RecoveryPhrase = () => {
+    var { registerData } = useSelector((state) => state.user);
     var phrase = [];
-    var randomNumber = 0
+    var randomNumber = 0;
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     for (let i = 0; i < 12; i++) {
         randomNumber = Math.floor(Math.random() * 1001);
         phrase.push(wordData.words[randomNumber]);
+    }
+    const onClickContinue = () => {
+        registerData = { ...registerData, recoveryPhrase: phrase };
+        dispatch(attemptRegister(registerData))
+            .then((res) => {
+                alert("success");
+                navigate("/Login")
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.log(error.response, "err");
+                    if (error.response.status === 400) {
+                        alert("your userName already exists. Please recreate you account.");
+                        navigate("/Register");
+                    }
+                }
+            });
     }
     return (
         <>
@@ -39,9 +60,8 @@ const RecoveryPhrase = () => {
                         Anyone with this phrase can access your account forever.
                     </p>
                     <div className="recovery-phrase-button-wrap">
-                        <Link to="" className="recovery-phrase-button">Continue</Link>
+                        <button type="submit" onClick={onClickContinue} className="btn recovery-phrase-button">Continue</button>
                     </div>
-
                 </div>
             </div>
         </>

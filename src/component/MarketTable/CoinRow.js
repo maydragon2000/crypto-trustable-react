@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const CoinRow = ({ item, index, smallType }) => {
     const navigate = useNavigate();
     const coinClick = () => {
-        navigate("/detail");
+        navigate(`/detail/${item.id}`);
     }
     return (
         <>

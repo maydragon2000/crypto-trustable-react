@@ -1,10 +1,11 @@
-import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RESET_PASSWORD_VERIFY, SAVE_EMAIL } from "../actions/user";
+import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RESET_PASSWORD_VERIFY, SAVE_EMAIL, SAVE_REGISTER_DATA } from "../actions/user";
 
 const initialState = {
   isAuth: getIsAuth(),
   user: null,
   isVerify: false,
-  email: ""
+  email: "",
+  reigsterData: "",
 };
 function getIsAuth() {
   try {
@@ -53,6 +54,10 @@ export default function user(state = initialState, action) {
 
       return {
         email: action.email
+      };
+    case SAVE_REGISTER_DATA:
+      return {
+        registerData: action.data
       }
     default:
       return state;

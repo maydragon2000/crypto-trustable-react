@@ -87,6 +87,10 @@
     outline: none;
 }
 
+.profile .information-item input:focus {
+    box-shadow: none;
+}
+
 .profile .information-item .input-wrap svg {
     width: 22px;
     height: 22px;

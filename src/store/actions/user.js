@@ -5,6 +5,7 @@ export const RESET_USER = "RESET_USER";
 export const RESET_PASSWORD_VERIFY = "RESET_PASSWORD_VERIFY";
 export const SAVE_EMAIL = "SAVE_EMAIL";
 export const GOOGLE_LOGIN_USER = "GOOGLE_LOGIN_USER";
+export const SAVE_REGISTER_DATA = "SAVE_REGISTER_DATA";
 
 export function login(user) {
   return {
@@ -37,5 +38,11 @@ export function saveEmail(email) {
   return {
     type: SAVE_EMAIL,
     email,
+  }
+}
+export function saveRegisterData(data) {
+  return {
+    type: SAVE_REGISTER_DATA,
+    data
   }
 }

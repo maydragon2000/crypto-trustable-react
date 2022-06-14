@@ -22,17 +22,8 @@ export const attemptLogin = (user) => (dispatch) =>
     }
   });
 
-export const attemptGoogleLogin = () => (dispatch) =>
-  getGoogleLogin().then(({ data }) => {
-    return data;
-  });
 
-export const attemptEmailVerify = (email) => (dispatch) =>
-  sendResetPasswordLink(email).then(({ data }) => {
-    dispatch(saveEmail(email.email));
-    localStorage.setItem("verifycode", base64encode(data.verifycode));
-    return true;
-  });
+
 export const attemptResetPassword = (user) => (dispatch) =>
   resetPassword(user)
     .then((response) => {

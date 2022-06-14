@@ -46,19 +46,18 @@
     margin-bottom: 70px;
 }
 
-.register-inner .email-wrap {
+.register-inner .userName-wrap {
     width: 562px;
     height: 62px;
     background-color: #121318;
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 }
 
-.register-inner .email-wrap input {
+.register-inner .userName-wrap input {
     background: transparent;
     width: 100%;
     border: 0px;
@@ -66,7 +65,7 @@
     color: white;
 }
 
-.register-inner .email-wrap input:focus-visible {
+.register-inner .userName-wrap input:focus-visible {
     outline: none;
 }
 
@@ -83,9 +82,8 @@ input:-webkit-autofill:focus {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
 }
 
 .register-inner .password-wrap input {
@@ -165,4 +163,12 @@ input:-webkit-autofill:focus {
     font-size: 16px;
     text-decoration: none;
     margin-bottom: 0px;
+}
+
+.register-inner .error {
+    position: absolute;
+    margin-top: 110px;
+    color: red;
+    margin-left: -20px;
+    text-align: start;
 }

@@ -6,40 +6,34 @@ import * as Yup from "yup";
 import { attemptLogin } from "../../../store/thunks/auth"
 import Error from "../../../component/Error/Error"
 import "./style.css"
-import { login } from "../../../store/actions/user";
-import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
     const [passwordShow, setPasswordShow] = useState(false);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
-    const navigate = useNavigate();
     const initialValues = {
-        email: "",
+        userName: "",
         password: "",
     };
 
     const validationSchema = Yup.object({
-        username: Yup.string().required("username is Required"),
+        userName: Yup.string().required("userName is Required"),
         password: Yup.string().min(5).max(255).required("Password is Required"),
     });
 
     const onSubmit = (values) => {
-        dispatch(login({}));
-        localStorage.setItem("token", "token");
-        navigate("/market")
-        // setLoading(true);
-        // dispatch(attemptLogin(values)).then((response) => {
-        //     if (response == true)
-        //         console.log("")
-        //     else {
-        //         setServerError("Email or password is wrong.")
-        //         setLoading(false);
-        //     }
-        // }).catch(({ response }) => {
-        //     setLoading(false);
-        // });
+        setLoading(true);
+        dispatch(attemptLogin(values)).then((response) => {
+            if (response == true)
+                console.log("")
+            else {
+                setServerError("userName or password is wrong.");
+                setLoading(false);
+            }
+        }).catch(({ response }) => {
+            setLoading(false);
+        });
     };
     return (
         <Formik
@@ -62,11 +56,11 @@ const Login = (props) => {
                                     <h1>Sign In</h1>
                                     <div className="email-wrap">
                                         <Field
-                                            name="username"
+                                            name="userName"
                                             type="text"
                                             placeholder="username"
                                         />
-                                        <ErrorMessage name="username" component={Error} />
+                                        <ErrorMessage name="userName" component={Error} />
                                     </div>
                                     <div className="password-wrap">
                                         <Field

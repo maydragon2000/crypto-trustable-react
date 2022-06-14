@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
-import { GoPlus, GoSearch } from "react-icons/go";
-import TableFilterCategory from "../../component/TableFilterCategory/TableFilterCategory";
-import MarketTable from "../../component/MarketTable/MarketTable";
-import ExchangeCoin from "../../component/ExchangeCoin/ExchangeCoin";
-import AddCoinModal from "../../component/AddCoinModal/AddCoinModal";
-const Watchlist = () => {
+import { Modal } from "react-bootstrap";
+import Select, { defaultTheme } from "react-select"
+import "./style.css"
+const AddCoinModal = ({ modalShow, onCloseModal }) => {
     const [marketData, setMarketData] = useState([{
         name: {
             image: "bitcoin",
@@ -136,58 +133,72 @@ const Watchlist = () => {
         lowPrice: "$87.38	",
         increase: true
     },]);
-    const [modalShow, setModalShow] = useState(false);
-
-    const onOpenModal = () => {
-        setModalShow(true);
-    }
-    const onCloseModal = () => {
-        setModalShow(false);
+    let options = [];
+    useEffect(() => {
+        marketData.map((item, index) => {
+            options.push({ value: index + 1, label: item.name.logogram, image: item.id, fullName: item.name.fullName })
+        })
+    })
+    const [selectedValue, setSelectedValue] = useState(undefined);
+    const onSelectChange = (value) => {
+        console.log(value, "value");
+        setSelectedValue(value);
     }
     return (
         <>
-            <div className="watchlist">
-                <div className="watchlist-left">
-                    <div className="watchlist-left-header">
-                        <div className="title">
-                            <h1>Watchlist</h1>
-                            <p>Update 16/02/2022 at 02:30 PM</p>
-                        </div>
-                        <div className="add-coin-button-wrap">
-                            <button onClick={onOpenModal}>
-                                <GoPlus />
-                                Add Coin
-                            </button>
-                        </div>
-                    </div>
-                    <div className="watchlist-left-filter">
-                        <div className="button-wrap">
-                            <TableFilterCategory name="Watchlist" type="login" />
-                            <button><GoPlus /></button>
-                        </div>
-                        <div className="search-wrap">
-                            <GoSearch />
-                            <input type="text" placeholder="Search $ Trade" />
-                        </div>
-                    </div>
-                    <MarketTable smallType={false} marketData={marketData} />
-                </div>
-                <div className="watchlist-right">
-                    <div className="watchlist-right-up">
-                        <ExchangeCoin />
-                    </div>
-                    <div className="watchlist-right-down">
-                        <div className="watchlist-right-down-header">
-                            <TableFilterCategory type="normal" name="Top Gainers" />
-                            <TableFilterCategory type="normal" name="Top Gainers" />
-                            <TableFilterCategory type="normal" name="Top Gainers" />
-                        </div>
-                        <MarketTable smallType={true} marketData={marketData} />
-                    </div>
-                </div>
-            </div>
-            <AddCoinModal modalShow={modalShow} onCloseModal={onCloseModal} />
+            <Modal
+                show={modalShow}
+                onHide={onCloseModal}
+                aria-labelledby="ModalHeader"
+                className="add-coin-modal"
+            >
+                <Modal.Header closeButton className="modal-header">
+                    <Modal.Title id='ModalHeader'>Add Coins</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="modal-body">
+                    <Select
+                        components={{ DropdownIndicator, IndicatorSeparator: null }}
+                        isClearable={true}
+                        menuIsOpen
+                        isMulti
+                        options={options}
+                        formatOptionLabel={item => (<div className="coin-column"><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.image}.png`} /><p>{item.fullName}</p>{item.label}</div>)}
+                        placeholder="Search..."
+                        tabSelectsValue={false}
+                        // value={selectedValue}
+                        // onChange={onSelectChange}
+                        autoFocus
+                    // blurInputOnSelect
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="footer-button">OK</button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
-export default Watchlist
+export default AddCoinModal;
+const { colors } = defaultTheme;
+const DropdownIndicator = () => (
+    <div css={{ color: colors.neutral20, height: 24, width: 32 }}>
+        <Svg>
+            <path
+                d="M16.436 15.085l3.94 4.01a1 1 0 0 1-1.425 1.402l-3.938-4.006a7.5 7.5 0 1 1 1.423-1.406zM10.5 16a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"
+                fill="currentColor"
+                fillRule="evenodd"
+            />
+        </Svg>
+    </div>
+);
+
+const Svg = p => (
+    <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        focusable="false"
+        role="presentation"
+        {...p}
+    />
+);

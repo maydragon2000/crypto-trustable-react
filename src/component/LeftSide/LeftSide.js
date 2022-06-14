@@ -20,7 +20,7 @@ const LeftSide = () => {
                     }}
                 />
 
-                <img className="avatar" alt="" src="image/user.svg" />
+                <img className="avatar" alt="" src="/image/user.svg" />
                 <h2>Allie Grater</h2>
                 <p>AllieGrater12345644@</p>
                 <SideNav.Nav defaultSelected="profile">
@@ -36,7 +36,7 @@ const LeftSide = () => {
                         </NavIcon>
                         <NavText>Sequrity</NavText>
                     </NavItem>
-                    <NavItem eventKey="wallet" onClick={() => navigate("sequrity")}>
+                    <NavItem eventKey="wallet" onClick={() => navigate("wallet")}>
                         <NavIcon>
                             <IoWalletOutline />
                         </NavIcon>

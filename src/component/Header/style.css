@@ -168,3 +168,9 @@
     top: 28px;
     margin-left: 10px;
 }
+
+.react-autosuggest__suggestions-container {
+    background-color: #080808 !important;
+    color: white;
+    border: 0px !important;
+}

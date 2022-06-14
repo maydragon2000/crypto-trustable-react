@@ -2,11 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineEmail } from "react-icons/md";
 import { ImPhone } from "react-icons/im";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 import "./style.css"
 const Profile = () => {
     const [edit, setEdit] = useState(false);
     const inputReference = useRef(null);
-
+    const [FirstName, setFirstName] = useState("Allie");
+    const [lastName, setLastName] = useState("Grater");
+    const [displayName, setDisplayName] = useState("Allie Grater");
+    const [userName, setUserName] = useState("AllieGrater12345644@");
+    const [phoneValue, setPhoneValue] = useState("+86 1234567890");
     const editInformation = () => {
         setEdit(true);
     }
@@ -28,13 +34,13 @@ const Profile = () => {
                         <div className="information-item">
                             <label>First Name</label>
                             <div className="input-wrap">
-                                <input ref={inputReference} disabled={!edit} type="text" value="Allie" />
+                                <input ref={inputReference} disabled={!edit} type="text" onChange={(e) => setFirstName(e.target.value)} value={FirstName} />
                             </div>
                         </div>
                         <div className="information-item">
                             <label>Last Name</label>
                             <div className="input-wrap">
-                                <input disabled={!edit} type="text" value="Grater" />
+                                <input disabled={!edit} type="text" onChange={(e) => setLastName(e.target.value)} value={lastName} />
                             </div>
                         </div>
                     </div>
@@ -42,14 +48,14 @@ const Profile = () => {
                         <div className="information-item">
                             <label>Display Name</label>
                             <div className="input-wrap">
-                                <input disabled={!edit} type="text" value="Allie Grater" />
+                                <input disabled={!edit} type="text" onChange={(e) => setDisplayName(e.target.value)} value={displayName} />
                                 <BiEditAlt />
                             </div>
                         </div>
                         <div className="information-item">
                             <label>User Name</label>
                             <div className="input-wrap">
-                                <input disabled={!edit} type="text" value="AllieGrater12345644@" />
+                                <input disabled={!edit} type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
                             </div>
                         </div>
                     </div>
@@ -68,7 +74,12 @@ const Profile = () => {
                         <div className="information-item">
                             <label>Phone Number</label>
                             <div className="input-wrap">
-                                <input disabled={!edit} type="text" value="+91 1234567890" />
+                                <PhoneInput
+                                    country={'us'}
+                                    value={phoneValue}
+                                    onChange={(e) => setPhoneValue(e)}
+                                    disabled={!edit}
+                                />
                                 <ImPhone />
                             </div>
                         </div>
@@ -77,7 +88,7 @@ const Profile = () => {
                 <div className="profile-setting">
                     <h3>This account was created on January 10, 2022, 02:12 PM</h3>
                     <div className="profile-setting-button-wrap">
-                        <button className="profile-setting-cancel">
+                        <button className="profile-setting-cancel" onClick={() => setEdit(false)} >
                             Cancel
                         </button>
                         <button className="profile-setting-save">

@@ -11,7 +11,9 @@ import 'react-tabs/style/react-tabs.css';
 import { FaFlag } from "react-icons/fa"
 import { BsFillLightningChargeFill } from "react-icons/bs"
 import SelectCoin from "../../component/SelectCoin/SelectCoin";
+import { useParams } from "react-router-dom";
 const CoinDetail = () => {
+    const { tokenId } = useParams();
     const [marketData, setMarketData] = useState([{
         name: {
             image: "bitcoin",
@@ -121,7 +123,7 @@ const CoinDetail = () => {
                         <div className="d-flex row">
                             <div className="col-6">
                                 <div className="coin-name">
-                                    <img alt="" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" />
+                                    <img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${tokenId}.png `} />
                                     <h5>Bitcoin</h5>
                                     <p>BTC</p>
                                     <div className="star-wrap">

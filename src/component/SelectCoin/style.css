@@ -45,6 +45,8 @@
 .coin-selection-wrap .selectinput {
     margin-left: -200px;
     z-index: 2;
+    background-color: #080808;
+    color: white;
 }
 
 .coin-selection-wrap .selectinput img {

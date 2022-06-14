@@ -1,0 +1,86 @@
+.wallet table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet thead {
+    height: 43px;
+    color: #6c7080;
+    font-size: 16px;
+    border-bottom: solid 2px rgb(33, 37, 41);
+    display: flex;
+    align-items: center;
+}
+
+.wallet thead tr {
+    display: flex;
+    width: 100%;
+}
+
+.wallet thead tr th {
+    padding-left: 10px;
+    width: 33%;
+}
+
+.wallet tbody {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    flex-direction: column;
+}
+
+.wallet tbody tr {
+    height: 56px;
+    color: white;
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+}
+
+.wallet tbody tr:hover {
+    background: #080808;
+}
+
+.wallet tbody td {
+    display: flex;
+    align-items: center;
+    width: 33%;
+    padding-left: 10px;
+}
+
+.wallet tbody .coinName {}
+
+.wallet tbody .coinName img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.wallet h1 {
+    font-size: 23px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.wallet-button-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wallet-button-wrap button {
+    width: 125px;
+    height: 50px;
+    border: 1px solid rgba(204, 206, 217, 0.15);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: #9295A6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet-button-wrap button svg {
+    margin-right: 5px;
+}
