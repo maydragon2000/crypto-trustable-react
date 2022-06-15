@@ -1,28 +1,36 @@
 import { push } from "connected-react-router";
-import { login, logout, saveEmail } from "../actions/user";
-import { encode as base64encode, decode as base64decode } from 'base-64';
+import { login, logout, saveEmail, setUser } from "../actions/user";
+import jwt_decode from "jwt-decode";
 import {
   postRegister,
   postLogin,
+  postRecoveryPhrase,
+  resetUser,
+  changePassword,
+  resetPassword,
   postLogout,
   getConfirmation,
   resendConfirmation,
   resetRegister,
   sendResetPasswordLink,
-  resetPassword,
-  getGoogleLogin,
 } from "../../api/index";
 
 export const attemptLogin = (user) => (dispatch) =>
   postLogin(user).then(({ data }) => {
+
     if (data.error_message === undefined) {
-      dispatch(login(data.user));
+      const decoded = jwt_decode(data.token);
+      console.log(decoded, "decoded");
+      dispatch(login(decoded));
       localStorage.setItem("token", data.token);
-      return true;
+      return 200;
     }
+  }).catch(({ response }) => {
+    if (response.status === 400)
+      return 400
+    if (response.status === 404)
+      return 404
   });
-
-
 
 export const attemptResetPassword = (user) => (dispatch) =>
   resetPassword(user)
@@ -34,6 +42,19 @@ export const attemptResetPassword = (user) => (dispatch) =>
     .catch(() => {
       dispatch(push(`/login/reset`));
     });
+export const attemptRegister = (newUser) => () => postRegister(newUser);
+export const attemptVerifyRecoveryPhrase = (data) => () => postRecoveryPhrase(data);
+export const attemptResetUser = (user) => (dispatch) =>
+  resetUser(user)
+    .then(({ data }) => {
+      const decoded = jwt_decode(data.token);
+      dispatch(setUser(decoded));
+      localStorage.setItem("token", data.token);
+      return true
+    }).catch(() => {
+      return false
+    });
+export const attemptChangePassword = (data) => () => changePassword(data);
 
 export const attemptLogout = () => (dispatch) =>
   postLogout()
@@ -44,7 +65,6 @@ export const attemptLogout = () => (dispatch) =>
       dispatch(push("/login"));
     });
 
-export const attemptRegister = (newUser) => () => postRegister(newUser);
 
 export const attemptGetConfirmation = (token) => (dispatch) =>
   getConfirmation(token).then(() => {

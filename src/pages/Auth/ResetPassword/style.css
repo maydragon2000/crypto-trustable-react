@@ -1,11 +1,11 @@
 .reset-password {
-    height: 100vh;
     background: black;
-    min-height: 700px;
+    min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 50px 0px;
 }
 
 .reset-password .logo {
@@ -73,7 +73,6 @@
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 20px;
     margin-bottom: 40px;
 }
@@ -107,4 +106,17 @@
 
 .reset-password-inner .reset-password-button:hover {
     opacity: 1;
+}
+
+.reset-password .input-wrap button {
+    background: transparent;
+    border: 0px;
+}
+
+.reset-password .error {
+    position: absolute;
+    margin-top: 110px;
+    color: red;
+    margin-left: -20px;
+    text-align: start;
 }

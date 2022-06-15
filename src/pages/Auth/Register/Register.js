@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Error from "../../../component/Error/Error"
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveRegisterData } from "../../../store/actions/user";
 const Register = (props) => {
     const [passwordShow, setPasswordShow] = useState(false);
@@ -58,7 +58,7 @@ const Register = (props) => {
                                             type={passwordShow ? "text" : "password"}
                                             placeholder="Password"
                                         />
-                                        <button onClick={() => setPasswordShow(!passwordShow)}><img alt="" src="image/password-show.svg" /></button>
+                                        <a onClick={() => setPasswordShow(!passwordShow)}><img alt="" src="image/password-show.svg" /></a>
                                         <ErrorMessage name="password" component={Error} />
                                     </div>
                                     <div className="password-wrap">
@@ -67,7 +67,7 @@ const Register = (props) => {
                                             type={passwordConfirmShow ? "text" : "password"}
                                             placeholder="Confirm Passward"
                                         />
-                                        <button onClick={() => setPasswordConfirmWrap(!passwordConfirmShow)}><img alt="" src="image/password-show.svg" /></button>
+                                        <a onClick={() => setPasswordConfirmWrap(!passwordConfirmShow)}><img alt="" src="image/password-show.svg" /></a>
                                         <ErrorMessage name="passwordConfirm" component={Error} />
                                     </div>
                                     <div className="register-agree-wrap">

@@ -1,11 +1,11 @@
 .register {
-    height: 100vh;
     background: black;
-    min-height: 700px;
+    min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 50px 0px;
 }
 
 .register .logo {

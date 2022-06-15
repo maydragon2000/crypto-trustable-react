@@ -19,6 +19,7 @@ import Profile from './pages/Profile/Profile';
 import Sequrity from './pages/Profile/Sequrity/Security';
 import Wallet from './pages/Profile/Wallet/Wallet';
 import WalletHistory from './pages/Profile/WalletHistory/WalletHistory';
+import Learn from './pages/Learn/Learn';
 const history = createBrowserHistory();
 const store = configureStore(history);
 function App() {
@@ -37,6 +38,7 @@ function App() {
               <Route exact path="/market" element={<Market />} />
               <Route exact path="detail/:tokenId" element={<CoinDetail />} />
               <Route exact path="/watchlist" element={<Watchlist />} />
+              <Route exact path="/learn" element={<Learn />} />
               <Route path="/profile" element={<ProfileLayout />}>
                 <Route exact path='/profile' element={<Profile />} />
                 <Route exact path='sequrity' element={<Sequrity />} />

@@ -33,7 +33,7 @@ const WalletHistory = () => {
         <>
             <div className="wallet-history">
                 <h1>Wallet History</h1>
-                {/* <table>
+                <table>
                     <thead>
                         <tr>
                             <th className="coinName">Coin </th>
@@ -54,7 +54,7 @@ const WalletHistory = () => {
                             </tr>)
                         }
                     </tbody>
-                </table> */}
+                </table>
             </div>
         </>
     )

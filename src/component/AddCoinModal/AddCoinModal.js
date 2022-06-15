@@ -141,7 +141,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
     })
     const [selectedValue, setSelectedValue] = useState(undefined);
     const onSelectChange = (value) => {
-        console.log(value, "value");
         setSelectedValue(value);
     }
     return (

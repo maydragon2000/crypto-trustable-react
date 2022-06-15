@@ -23,7 +23,6 @@ const RecoveryPhrase = () => {
             })
             .catch((error) => {
                 if (error.response) {
-                    console.log(error.response, "err");
                     if (error.response.status === 400) {
                         alert("your userName already exists. Please recreate you account.");
                         navigate("/Register");

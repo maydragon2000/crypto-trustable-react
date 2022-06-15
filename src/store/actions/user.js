@@ -2,7 +2,7 @@ export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const SET_USER = "SET_USER";
 export const RESET_USER = "RESET_USER";
-export const RESET_PASSWORD_VERIFY = "RESET_PASSWORD_VERIFY";
+export const RECOVERY_PHRASE_VERIFY = "RECOVERY_PHRASE_VERIFY";
 export const SAVE_EMAIL = "SAVE_EMAIL";
 export const GOOGLE_LOGIN_USER = "GOOGLE_LOGIN_USER";
 export const SAVE_REGISTER_DATA = "SAVE_REGISTER_DATA";
@@ -31,8 +31,8 @@ export function resetUser() {
   return { type: RESET_USER };
 }
 
-export function resetPasswordVerify(email) {
-  return { type: RESET_PASSWORD_VERIFY, email };
+export function recoveryPhraseVerify(name) {
+  return { type: RECOVERY_PHRASE_VERIFY, name };
 }
 export function saveEmail(email) {
   return {

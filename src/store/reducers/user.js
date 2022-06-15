@@ -1,10 +1,11 @@
-import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RESET_PASSWORD_VERIFY, SAVE_EMAIL, SAVE_REGISTER_DATA } from "../actions/user";
+import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RECOVERY_PHRASE_VERIFY, SAVE_EMAIL, SAVE_REGISTER_DATA } from "../actions/user";
+import jwt_decode from "jwt-decode";
 
 const initialState = {
   isAuth: getIsAuth(),
-  user: null,
+  user: setInitUser(),
   isVerify: false,
-  email: "",
+  name: "",
   reigsterData: "",
 };
 function getIsAuth() {
@@ -19,7 +20,15 @@ function getIsAuth() {
     return false;
   }
 }
-
+function setInitUser() {
+  if (getIsAuth() === true) {
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    return decoded;
+  } else {
+    return null;
+  }
+}
 export default function user(state = initialState, action) {
   switch (action.type) {
     case LOGIN_USER:
@@ -43,17 +52,17 @@ export default function user(state = initialState, action) {
       };
     case RESET_USER:
       return initialState;
-    case RESET_PASSWORD_VERIFY:
+    case RECOVERY_PHRASE_VERIFY:
       return {
         isAuth: false,
         user: null,
         isVerify: true,
-        email: action.email
+        name: action.name,
       };
     case SAVE_EMAIL:
 
       return {
-        email: action.email
+        name: action.name
       };
     case SAVE_REGISTER_DATA:
       return {

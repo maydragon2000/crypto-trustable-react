@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { attemptLogin } from "../../../store/thunks/auth"
@@ -10,6 +10,7 @@ import "./style.css"
 const Login = (props) => {
     const [passwordShow, setPasswordShow] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
     const initialValues = {
@@ -25,12 +26,16 @@ const Login = (props) => {
     const onSubmit = (values) => {
         setLoading(true);
         dispatch(attemptLogin(values)).then((response) => {
-            if (response == true)
-                console.log("")
-            else {
-                setServerError("userName or password is wrong.");
-                setLoading(false);
+            if (response === 200) {
+                navigate("/market");
             }
+            if (response === 400) {
+                alert("password is incorrect.");
+            }
+            if (response === 404) {
+                alert("you are not sign up.")
+            }
+            setLoading(false);
         }).catch(({ response }) => {
             setLoading(false);
         });
@@ -68,7 +73,7 @@ const Login = (props) => {
                                             type={passwordShow ? "text" : "password"}
                                             placeholder="Password"
                                         />
-                                        <button onClick={() => setPasswordShow(!passwordShow)}><img alt="" src="image/password-show.svg" /></button>
+                                        <a onClick={() => setPasswordShow(!passwordShow)}><img alt="" src="image/password-show.svg" /></a>
                                         <ErrorMessage name="password" component={Error} />
                                     </div>
                                     <div className="forgot-password-wrap">

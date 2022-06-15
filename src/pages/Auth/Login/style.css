@@ -1,11 +1,12 @@
 .login {
-    height: 100vh;
+    /* height: 100vh; */
     background: black;
-    min-height: 700px;
+    min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 50px 0px;
 }
 
 .login .logo {
@@ -37,7 +38,7 @@
 
 .login-inner {
     width: 562px;
-    height: 60%;
+    height: 70%;
 }
 
 .login-inner h1 {

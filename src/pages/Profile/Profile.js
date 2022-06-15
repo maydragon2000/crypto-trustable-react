@@ -2,24 +2,46 @@ import React, { useState, useRef, useEffect } from "react";
 import { BiEditAlt } from "react-icons/bi";
 import { MdOutlineEmail } from "react-icons/md";
 import { ImPhone } from "react-icons/im";
-import PhoneInput from 'react-phone-input-2'
+import PhoneInput from 'react-phone-input-2';
+import { useSelector, useDispatch } from "react-redux";
+import { attemptResetUser } from "../../store/thunks/auth";
 import 'react-phone-input-2/lib/style.css'
 import "./style.css"
 const Profile = () => {
+    const { user } = useSelector((state) => state.user);
+    console.log(user, "user profile");
     const [edit, setEdit] = useState(false);
     const inputReference = useRef(null);
-    const [FirstName, setFirstName] = useState("Allie");
-    const [lastName, setLastName] = useState("Grater");
-    const [displayName, setDisplayName] = useState("Allie Grater");
-    const [userName, setUserName] = useState("AllieGrater12345644@");
-    const [phoneValue, setPhoneValue] = useState("+86 1234567890");
+    const [firstName, setFirstName] = useState(user.firstName);
+    const [lastName, setLastName] = useState(user.lastName);
+    const [displayName, setDisplayName] = useState(user.displayName);
+    const [userName, setUserName] = useState(user.name);
+    const [email, setEmail] = useState(user.email);
+    const [phoneValue, setPhoneValue] = useState(user.phoneNumber);
+    const dispatch = useDispatch();
     const editInformation = () => {
         setEdit(true);
     }
     useEffect(() => {
         if (edit == true)
             inputReference.current.focus();
-    }, [edit])
+    }, [edit]);
+    const sendUpdateUser = {
+        userName: userName,
+        firstName: firstName,
+        lastName: lastName,
+        displayName: displayName,
+        email: email,
+        phoneNumber: phoneValue,
+    }
+    const saveChange = () => {
+        dispatch(attemptResetUser(sendUpdateUser)).then((res) => {
+            if (res === true)
+                alert("success");
+        }).catch((response) => {
+            console.log(response, "response profile");
+        })
+    }
     return (
         <>
             <div className="profile">
@@ -34,7 +56,7 @@ const Profile = () => {
                         <div className="information-item">
                             <label>First Name</label>
                             <div className="input-wrap">
-                                <input ref={inputReference} disabled={!edit} type="text" onChange={(e) => setFirstName(e.target.value)} value={FirstName} />
+                                <input ref={inputReference} disabled={!edit} type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
                             </div>
                         </div>
                         <div className="information-item">
@@ -55,7 +77,7 @@ const Profile = () => {
                         <div className="information-item">
                             <label>User Name</label>
                             <div className="input-wrap">
-                                <input disabled={!edit} type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
+                                <input disabled={true} type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
                             </div>
                         </div>
                     </div>
@@ -67,7 +89,7 @@ const Profile = () => {
                         <div className="information-item">
                             <label>Email</label>
                             <div className="input-wrap">
-                                <input disabled={true} type="text" value="AllieGrater12345644@gmail.com" />
+                                <input disabled={!edit} value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
                                 <MdOutlineEmail />
                             </div>
                         </div>
@@ -91,7 +113,7 @@ const Profile = () => {
                         <button className="profile-setting-cancel" onClick={() => setEdit(false)} >
                             Cancel
                         </button>
-                        <button className="profile-setting-save">
+                        <button onClick={saveChange} className="profile-setting-save">
                             Save Change
                         </button>
                     </div>

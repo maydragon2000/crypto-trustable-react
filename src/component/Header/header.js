@@ -7,12 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/actions/user";
 const Header = (props) => {
-    const { isAuth } = useSelector((state) => state.user);
+    const { isAuth, user } = useSelector((state) => state.user);
     const [currency, setCurrency] = useState("USD");
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSelectedCurrency = (e) => {
-        // console.log(`Selected ${currencyAbbrev}`);
         setCurrency(e.target.value);
     }
     const logOut = () => {
@@ -35,7 +34,7 @@ const Header = (props) => {
                         <NavLink href="/market">Market</NavLink>
                         <NavLink href="/watchlist" >Watchlist</NavLink>
                         {/* <NavLink>Portfolio</NavLink> */}
-                        <NavLink>Learn</NavLink>
+                        <NavLink href="/learn" >Learn</NavLink>
                     </div>
                     <div className="button-wrap">
                         <SelectCurrency name="selectCurrency" value={currency} onChange={(e) => onSelectedCurrency(e)} />
