@@ -1,5 +1,5 @@
 import { push } from "connected-react-router";
-import { login, logout, saveEmail, setUser } from "../actions/user";
+import { login, setUser } from "../actions/user";
 import jwt_decode from "jwt-decode";
 import {
   postRegister,
@@ -8,11 +8,7 @@ import {
   resetUser,
   changePassword,
   resetPassword,
-  postLogout,
-  getConfirmation,
-  resendConfirmation,
-  resetRegister,
-  sendResetPasswordLink,
+  uploadImage
 } from "../../api/index";
 
 export const attemptLogin = (user) => (dispatch) =>
@@ -55,28 +51,15 @@ export const attemptResetUser = (user) => (dispatch) =>
       return false
     });
 export const attemptChangePassword = (data) => () => changePassword(data);
-
-export const attemptLogout = () => (dispatch) =>
-  postLogout()
-    .then(() => {
-      dispatch(logout());
+export const attemptUploadImage = (data) => (dispatch) =>
+  uploadImage(data)
+    .then((res) => {
+      const decoded = jwt_decode(res.data.token);
+      dispatch(setUser(decoded));
+      localStorage.setItem("token", res.data.token);
+      return true;
     })
-    .finally(() => {
-      dispatch(push("/login"));
-    });
+    .catch(({ response }) => {
+      return false;
+    })
 
-
-export const attemptGetConfirmation = (token) => (dispatch) =>
-  getConfirmation(token).then(() => {
-    dispatch(push("/login"));
-  });
-
-export const attemptResendConfirmation = (user) => (dispatch) =>
-  resendConfirmation(user).catch(() => {
-    dispatch(push("/register"));
-  });
-
-export const attemptResetRegister = (email) => (dispatch) =>
-  resetRegister(email).catch(() => {
-    dispatch(push("/register"));
-  });

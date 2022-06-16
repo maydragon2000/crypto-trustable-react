@@ -34,12 +34,6 @@ export function resetUser() {
 export function recoveryPhraseVerify(name) {
   return { type: RECOVERY_PHRASE_VERIFY, name };
 }
-export function saveEmail(email) {
-  return {
-    type: SAVE_EMAIL,
-    email,
-  }
-}
 export function saveRegisterData(data) {
   return {
     type: SAVE_REGISTER_DATA,

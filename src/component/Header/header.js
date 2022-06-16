@@ -40,7 +40,7 @@ const Header = (props) => {
                         <SelectCurrency name="selectCurrency" value={currency} onChange={(e) => onSelectedCurrency(e)} />
                         <Link to="" style={{ display: !isAuth ? "none" : "flex" }} className="trade-history-button"><img alt="" src="/image/trade-history.svg" />Trade History</Link>
                         <Link to="/profile/wallet" style={{ display: !isAuth ? "none" : "flex" }} className="wallet-button"><img alt="" src="/image/wallet.svg" /> Wallet</Link>
-                        <Link to="/profile" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src="/image/user.svg" /></Link>
+                        <Link to="/profile" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src={user === null ? "" : user.image === undefined ? "/image/user.jpg" : `http://localhost:5000/images/${user.image}`} /></Link>
                         <DropdownButton style={{ display: !isAuth ? "none" : "flex" }} id="dropdown-item-button" title="Allie Grater">
                             <Dropdown.Item as="button" onClick={goProfile}>Profile</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => logOut()}>Log Out</Dropdown.Item>

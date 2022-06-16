@@ -1,0 +1,43 @@
+.learn {
+    background-color: #080808;
+    padding: 70px 80px;
+    color: white;
+}
+
+.learn h1 {
+    font-size: 52px;
+    line-height: 64px;
+    font-weight: 700;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.learn h2 {
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 700;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.learn h3 {
+    font-size: 34px;
+    line-height: 44px;
+    font-weight: 700;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.learn p {
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.learn li {
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}

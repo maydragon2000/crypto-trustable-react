@@ -10,6 +10,7 @@ import "./style.css"
 const Profile = () => {
     const { user } = useSelector((state) => state.user);
     console.log(user, "user profile");
+    const [disable, setDisable] = useState(true);
     const [edit, setEdit] = useState(false);
     const inputReference = useRef(null);
     const [firstName, setFirstName] = useState(user.firstName);
@@ -21,6 +22,7 @@ const Profile = () => {
     const dispatch = useDispatch();
     const editInformation = () => {
         setEdit(true);
+        setDisable(false);
     }
     useEffect(() => {
         if (edit == true)
@@ -34,6 +36,10 @@ const Profile = () => {
         email: email,
         phoneNumber: phoneValue,
     }
+    const onCLickCancel = () => {
+        setEdit(false);
+        setDisable(true);
+    }
     const saveChange = () => {
         dispatch(attemptResetUser(sendUpdateUser)).then((res) => {
             if (res === true)
@@ -42,6 +48,7 @@ const Profile = () => {
             console.log(response, "response profile");
         })
     }
+
     return (
         <>
             <div className="profile">
@@ -110,10 +117,10 @@ const Profile = () => {
                 <div className="profile-setting">
                     <h3>This account was created on January 10, 2022, 02:12 PM</h3>
                     <div className="profile-setting-button-wrap">
-                        <button className="profile-setting-cancel" onClick={() => setEdit(false)} >
+                        <button disabled={disable} className="btn profile-setting-cancel" onClick={onCLickCancel} >
                             Cancel
                         </button>
-                        <button onClick={saveChange} className="profile-setting-save">
+                        <button disabled={disable} onClick={saveChange} className="btn profile-setting-save">
                             Save Change
                         </button>
                     </div>

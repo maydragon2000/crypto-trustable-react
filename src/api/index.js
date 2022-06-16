@@ -1,4 +1,3 @@
-import http from "../services/httpService";
 import axios from "axios";
 
 const postRegister = (user) => {
@@ -16,11 +15,14 @@ const resetUser = (user) =>
   axios.post("http://localhost:5000/api/users/resetuser", user);
 const changePassword = (data) =>
   axios.post("http://localhost:5000/api/users/changePassword", data);
+const uploadImage = (data) => {
+  console.log(data, "imagedata");
+  const formData = new FormData();
+  formData.append('userName', data.userName);
+  formData.append('photo', data.image);
+  return axios.post("http://localhost:5000/api/users/addImage", formData);
+}
 
-const postLogout = () => http.post("http://localhost:5000/api/auth/logout");
-const getConfirmation = (token) => http.get(`/auth/confirmation/${token}`);
-const resendConfirmation = (user) => axios.post("http://localhost:8000/api/resend", user);
-const resetRegister = (user) => http.post("http://localhost:5000/api/auth/register/reset", user);
 const getUser = (token) => {
   axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
   return axios.get("http://localhost:8000/api/user");
@@ -33,9 +35,6 @@ export {
   resetPassword,
   resetUser,
   changePassword,
-  postLogout,
-  getConfirmation,
-  resendConfirmation,
+  uploadImage,
   getUser,
-  resetRegister,
 };

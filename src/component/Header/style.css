@@ -144,6 +144,7 @@
 .header .user-picture img {
     width: 60px;
     margin-right: 20px;
+    border-radius: 30px;
 }
 
 .header .dropdown {

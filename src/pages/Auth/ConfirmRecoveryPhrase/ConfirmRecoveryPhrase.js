@@ -20,7 +20,6 @@ const ConfirmRecoveryPhrase = () => {
     }
     const verify = () => {
         dispatch(attemptVerifyRecoveryPhrase(sendVerifyData)).then((res) => {
-            console.log(res, "res");
             if (res.status === 200) {
                 dispatch(recoveryPhraseVerify(res.data.name));
                 navigate("/ResetPassword");

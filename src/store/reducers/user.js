@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RECOVERY_PHRASE_VERIFY, SAVE_EMAIL, SAVE_REGISTER_DATA } from "../actions/user";
+import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RECOVERY_PHRASE_VERIFY, SAVE_REGISTER_DATA } from "../actions/user";
 import jwt_decode from "jwt-decode";
 
 const initialState = {
@@ -59,11 +59,7 @@ export default function user(state = initialState, action) {
         isVerify: true,
         name: action.name,
       };
-    case SAVE_EMAIL:
 
-      return {
-        name: action.name
-      };
     case SAVE_REGISTER_DATA:
       return {
         registerData: action.data
