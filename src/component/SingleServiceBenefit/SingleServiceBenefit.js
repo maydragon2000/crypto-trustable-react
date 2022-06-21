@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const SingleServiceBenefit = ({ item }) => {
     return (
         <>
@@ -7,7 +8,7 @@ const SingleServiceBenefit = ({ item }) => {
                     <img alt="" src={`image/${item.image} `} />
                 </div>
                 <h5>{item.name}</h5>
-                <p>{item.description}</p>
+                <p><Link to="/bonus" style={{ display: item.name === "Bonus & Refferal" ? "" : "none" }}>Click Here</Link>{item.description}</p>
             </div>
         </>
     )

@@ -1,5 +1,5 @@
 .header .navbar-brand img {
-    width: 40px;
+    width: 50px;
 }
 
 .header .navbar {
@@ -103,7 +103,7 @@
 
 .header .trade-history-button {
     text-decoration: none;
-    width: 180px;
+    width: 130px;
     height: 60px;
     background: #080808;
     border-radius: 10px;

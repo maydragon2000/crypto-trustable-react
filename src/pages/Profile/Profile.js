@@ -5,6 +5,8 @@ import { ImPhone } from "react-icons/im";
 import PhoneInput from 'react-phone-input-2';
 import { useSelector, useDispatch } from "react-redux";
 import { attemptResetUser } from "../../store/thunks/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'react-phone-input-2/lib/style.css'
 import "./style.css"
 const Profile = () => {
@@ -19,6 +21,7 @@ const Profile = () => {
     const [userName, setUserName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
     const [phoneValue, setPhoneValue] = useState(user.phoneNumber);
+    const success = () => toast.success("Success Update");
     const dispatch = useDispatch();
     const editInformation = () => {
         setEdit(true);
@@ -43,7 +46,7 @@ const Profile = () => {
     const saveChange = () => {
         dispatch(attemptResetUser(sendUpdateUser)).then((res) => {
             if (res === true)
-                alert("success");
+                success();
         }).catch((response) => {
             console.log(response, "response profile");
         })
@@ -52,12 +55,13 @@ const Profile = () => {
     return (
         <>
             <div className="profile">
+                <ToastContainer limit={3} autoClose={3000} hideProgressBar={true} theme="colored" />
                 <div className="profile-title">
                     <h1>My Profile</h1>
                     <button onClick={editInformation}><BiEditAlt /> Edit</button>
                 </div>
                 <h2>Personal Information</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                <p>Here you can add your own personal informations about your account !</p>
                 <div className="personal-information-wrap">
                     <div className="personal-information-wrap-column">
                         <div className="information-item">
@@ -90,7 +94,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <h2>Contact Information</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                <p>Here you need to provide your contact informations , maybe you’ll get in touch with our team !</p>
                 <div className="personal-information-wrap">
                     <div className="personal-information-wrap-column">
                         <div className="information-item">
@@ -115,7 +119,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="profile-setting">
-                    <h3>This account was created on January 10, 2022, 02:12 PM</h3>
+                    <h3>This account was created on {user.date}</h3>
                     <div className="profile-setting-button-wrap">
                         <button disabled={disable} className="btn profile-setting-cancel" onClick={onCLickCancel} >
                             Cancel

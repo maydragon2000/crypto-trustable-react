@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { Link, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import axios from "axios";
 import { RiLock2Line } from "react-icons/ri";
 import { IoWalletOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { attemptUploadImage } from "../../store/thunks/auth";
-import { setUser } from "../../store/actions/user";
-import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./style.css";
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
@@ -33,23 +32,26 @@ const LeftSide = () => {
         if (sendImageData.image !== "")
             setDisable(false);
     })
+    const success = () => toast.success("Success Save New Avatar.");
+    const failed = () => toast.error("Error Save New Avatar.")
     const sendUploadImage = () => {
         dispatch(attemptUploadImage(sendImageData)).then((res) => {
             if (res === true)
-                alert("success");
+                success();
         }).catch((res) => {
-            console.log(res, "uuu");
+            failed();
         })
     }
     return (
         <>
             <SideNav expanded={isVisible} >
+                <ToastContainer limit={3} autoClose={3000} hideProgressBar={true} theme="colored" />
                 <SideNav.Toggle
                     onClick={() => {
                         setIsVisible(!isVisible);
                     }}
                 />
-                <img className="avatar" onClick={handleClick} alt="not fount" src={selectedImage ? URL.createObjectURL(selectedImage) : uploadedImage === undefined ? "/image/user.jpg" : `http://localhost:5000/images/${uploadedImage}`} />
+                <img className="avatar" onClick={handleClick} alt="not fount" src={selectedImage ? URL.createObjectURL(selectedImage) : uploadedImage === undefined ? "/image/user.jpg" : `http://127.0.0.1:5000/images/${uploadedImage}`} />
                 <button disabled={disable} className="btn save-uploadImage" onClick={sendUploadImage}>Save</button>
                 <input type="file"
                     style={{ display: "none" }}
@@ -74,7 +76,7 @@ const LeftSide = () => {
                         <NavIcon>
                             <RiLock2Line />
                         </NavIcon>
-                        <NavText>Sequrity</NavText>
+                        <NavText>Security</NavText>
                     </NavItem>
                     <NavItem eventKey="wallet" onClick={() => navigate("wallet")}>
                         <NavIcon>

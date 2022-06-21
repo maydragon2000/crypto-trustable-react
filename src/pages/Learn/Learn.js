@@ -3,7 +3,7 @@ import "./style.css"
 const Learn = () => {
     return (
         <>
-            <div className="learn">
+            <div className="learnpage">
                 <h1>Crypto basics</h1>
                 <h2>What is Ethereum?</h2>
                 <p>Ethereum, which launched in 2015, is the second-biggest cryptocurrency by market cap after Bitcoin. But unlike Bitcoin, it wasn’t created to be digital money. Instead, Ethereum’s founders set out to build a new kind of global, decentralized computing platform that takes the security and openness of blockchains and extends those attributes to a vast range of applications.</p>

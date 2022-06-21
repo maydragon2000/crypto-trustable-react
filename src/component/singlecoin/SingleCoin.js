@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-const SingleCoin = ({ coinName, logogram, price }) => {
+const SingleCoin = ({ coinName, logogram, price, coinId }) => {
     return (
         <>
             <div className="coin-wrap-animation">
@@ -8,7 +8,7 @@ const SingleCoin = ({ coinName, logogram, price }) => {
                     <span>
                         <div className="coin-wrap">
                             <div className="coin-name">
-                                <img alt="" src={`image/${coinName}.svg`} />
+                                <img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coinId}.png`} />
                                 <h5>{coinName}</h5>
                                 <p>{logogram}</p>
                             </div>
@@ -18,7 +18,7 @@ const SingleCoin = ({ coinName, logogram, price }) => {
                                 <img alt="" src="image/mask.svg" />
                             </div>
                             <div className="coin-graph">
-                                <img className="up" alt="" src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" />
+                                <img className="up" alt="" src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${coinId}.svg`} />
                             </div>
                         </div>
                     </span>

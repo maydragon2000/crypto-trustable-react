@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Error from "../../../component/Error/Error";
 import { attemptChangePassword } from "../../../store/thunks/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./style.css"
 const Sequrity = () => {
     const { user } = useSelector((state) => state.user);
@@ -23,15 +25,17 @@ const Sequrity = () => {
         newPassword: Yup.string().min(5).max(255).required("New Password is Required"),
         passwordConfirm: Yup.string().oneOf([Yup.ref('newPassword'), null], 'Passwords must match').min(5).max(255).required("Coinfirm Password is Required")
     });
+    const success = () => toast.success("Success Update New Password.");
+    const passwordIncorrect = () => toast.error("Current Password is not correct.");
     const onSubmit = (values) => {
         console.log(values, "reset value");
         setLoading(true);
         dispatch(attemptChangePassword(values)).then((res) => {
-            alert("Success New Password Update");
+            success();
             setLoading(false);
         }).catch(({ response }) => {
             if (response.status === 400)
-                alert("Current Password is incorrect");
+                passwordIncorrect();
             setLoading(false);
         });
     };
@@ -45,8 +49,10 @@ const Sequrity = () => {
                 return (
                     <>
                         <div className="security-profile">
+                            <ToastContainer limit={3} autoClose={3000} hideProgressBar={true} theme="colored" />
+
                             <Form>
-                                <h1>Sequrity</h1>
+                                <h1>Security</h1>
                                 <h2>Password</h2>
                                 <p>Set a unique password to protect your personal account.</p>
                                 <div className="password-change-wrap">

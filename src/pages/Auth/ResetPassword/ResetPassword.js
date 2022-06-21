@@ -5,6 +5,7 @@ import { attemptResetPassword } from "../../../store/thunks/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Error from "../../../component/Error/Error"
+import { setResponseStatus } from "../../../store/actions/user";
 import "./style.css";
 const ResetPassword = () => {
     const { name, isVerify } = useSelector((state) => state.user);
@@ -31,6 +32,7 @@ const ResetPassword = () => {
         setLoading(true);
         dispatch(attemptResetPassword(values)).then((res) => {
             setLoading(false);
+            dispatch(setResponseStatus("success password updated"))
             navigate("/login");
         })
     };

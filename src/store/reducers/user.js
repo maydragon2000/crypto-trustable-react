@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RECOVERY_PHRASE_VERIFY, SAVE_REGISTER_DATA } from "../actions/user";
+import { LOGIN_USER, LOGOUT_USER, SET_USER, RESET_USER, RECOVERY_PHRASE_VERIFY, SAVE_REGISTER_DATA, SET_RESPONSE_STATUS } from "../actions/user";
 import jwt_decode from "jwt-decode";
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
   isVerify: false,
   name: "",
   reigsterData: "",
+  responseStatus: "",
 };
 function getIsAuth() {
   try {
@@ -63,6 +64,10 @@ export default function user(state = initialState, action) {
     case SAVE_REGISTER_DATA:
       return {
         registerData: action.data
+      };
+    case SET_RESPONSE_STATUS:
+      return {
+        responseStatus: action.data
       }
     default:
       return state;

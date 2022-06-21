@@ -8,25 +8,25 @@ const WalletHistory = () => {
             date: "2022-06-11 02:24",
             amount: 110.03,
             address: "0x6ef99c7e1bdd57e344c5a7d96f666157fd48c31d",
-            action: "sent"
+            action: "Sent"
         },
         {
             date: "2022-06-12 02:24",
             amount: 110.03,
             address: "0x6ef99c7e1bdd57e344c5a7d96f666157fd48c31d",
-            action: "received"
+            action: "Received"
         },
         {
             date: "2022-06-13 02:24",
             amount: 110.03,
             address: "0x6ef99c7e1bdd57e344c5a7d96f666157fd48c31d",
-            action: "sent"
+            action: "Sent"
         },
         {
             date: "2022-06-14 02:24",
             amount: 110.03,
             address: "0x6ef99c7e1bdd57e344c5a7d96f666157fd48c31d",
-            action: "pending"
+            action: "Pending"
         },
     ]
     return (
@@ -45,13 +45,14 @@ const WalletHistory = () => {
                     </thead>
                     <tbody>
                         {
-                            walletHistory.map((item, index) => <tr key={index} style={{ color: item.action === "sent" ? "rgb(22, 199, 132)" : item.action === "received" ? "rgb(22, 199, 132)" : item.action === "pending" ? "yellow" : "white" }}>
-                                <td className="coinName"><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${tokenId}.png`} />{tokenName}</td>
-                                <td className="date">{item.date}</td>
-                                <td className="amount">{item.amount}</td>
-                                <td className="address">{item.address}</td>
-                                <td className="action">{item.action}</td>
-                            </tr>)
+                            walletHistory.map((item, index) =>
+                                <tr key={index} >
+                                    <td className="coinName"><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${tokenId}.png`} />{tokenName}</td>
+                                    <td className="date">{item.date}</td>
+                                    <td className="amount">{item.amount}</td>
+                                    <td className="address">{item.address}</td>
+                                    <td className="action" style={{ color: item.action === "Sent" ? "rgb(22, 199, 132)" : item.action === "Received" ? "rgb(0, 255, 0)" : item.action === "Pending" ? "yellow" : "white" }}>{item.action}</td>
+                                </tr>)
                         }
                     </tbody>
                 </table>

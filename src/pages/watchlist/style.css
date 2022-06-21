@@ -29,7 +29,7 @@
     margin-bottom: 0px;
 }
 
-.watchlist-left-header .add-coin-button-wrap button {
+.watchlist-left-filter .add-coin-button-wrap button {
     width: 125px;
     height: 50px;
     border: 1px solid rgba(204, 206, 217, 0.15);
@@ -43,7 +43,7 @@
     align-items: center;
 }
 
-.watchlist-left-header .add-coin-button-wrap button svg {
+.watchlist-left-filter .add-coin-button-wrap button svg {
     color: #9295A6;
     margin-right: 10px;
 }
@@ -139,4 +139,3 @@
 .watchlist-right .market-table tbody {
     height: 230px;
 }
-

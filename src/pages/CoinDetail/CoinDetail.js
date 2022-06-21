@@ -242,7 +242,7 @@ const CoinDetail = () => {
                                     <div className="coin-selection-wrap ">
                                         <div className="input-wrap">
                                             <p>Address For send</p>
-                                            <input placeholder="address" />
+                                            <input placeholder="Insert the adress" />
                                         </div>
                                     </div>
                                     <p className="total">Total: (+Fee 0.2) 0.00</p>
@@ -274,7 +274,7 @@ const CoinDetail = () => {
                                     <div className="coin-selection-wrap ">
                                         <div className="input-wrap">
                                             <p>Address For Receive</p>
-                                            <input placeholder="address" />
+                                            <input placeholder="Insert the adress" />
                                         </div>
                                     </div>
                                     <p className="total">Total: (+Fee 0.2) 0.00</p>

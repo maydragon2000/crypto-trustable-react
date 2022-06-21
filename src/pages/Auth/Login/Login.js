@@ -5,9 +5,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { attemptLogin } from "../../../store/thunks/auth"
 import Error from "../../../component/Error/Error"
+import { ToastContainer, toast } from 'react-toastify';
+import { setResponseStatus } from "../../../store/actions/user";
+import 'react-toastify/dist/ReactToastify.css';
 import "./style.css"
 
 const Login = (props) => {
+    const { responseStatus } = useSelector((state) => state.user);
     const [passwordShow, setPasswordShow] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,7 +26,20 @@ const Login = (props) => {
         userName: Yup.string().required("userName is Required"),
         password: Yup.string().min(5).max(255).required("Password is Required"),
     });
-
+    const passwordIncorrect = () => toast.error("Password is not correct.");
+    const userNameIncorrect = () => toast.error("Username is not correct.");
+    const successRegister = () => toast.success(({ closeToast }) => <div><label>Success Register.</label><label> Please Sign In Now</label></div>);
+    const successUpdatePassword = () => toast.success("Success Update New Password.");
+    useEffect(() => {
+        if (responseStatus === "success register") {
+            dispatch(setResponseStatus(""));
+            successRegister();
+        }
+        if (responseStatus === "success password updated") {
+            dispatch(setResponseStatus(""));
+            successUpdatePassword();
+        }
+    }, [])
     const onSubmit = (values) => {
         setLoading(true);
         dispatch(attemptLogin(values)).then((response) => {
@@ -30,10 +47,10 @@ const Login = (props) => {
                 navigate("/market");
             }
             if (response === 400) {
-                alert("password is incorrect.");
+                passwordIncorrect();
             }
             if (response === 404) {
-                alert("you are not sign up.")
+                userNameIncorrect();
             }
             setLoading(false);
         }).catch(({ response }) => {
@@ -56,6 +73,7 @@ const Login = (props) => {
                                     <p>Crypto Trustable</p>
                                 </Link>
                             </div>
+                            <ToastContainer limit={3} autoClose={3000} hideProgressBar={true} theme="colored" />
                             <div className="login-inner">
                                 <Form>
                                     <h1>Sign In</h1>
@@ -94,6 +112,7 @@ const Login = (props) => {
                 );
             }}
         </Formik>
+
     );
 };
 export default Login;

@@ -6,8 +6,8 @@ const StartMining = () => {
         <>
             <div className="start-mining row">
                 <div className="col-6 left">
-                    <h2>Start mining now</h2>
-                    <p>Join now with DYNAMIC to get the latest news and start mining now</p>
+                    <h2>Newsletter</h2>
+                    <p>Just insert your e-mail to get the latest news about Crypto Trustable !</p>
                 </div>
                 <div className="col-6 right">
                     <div className="input-wrap">

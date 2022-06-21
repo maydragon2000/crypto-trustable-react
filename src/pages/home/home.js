@@ -14,7 +14,7 @@ const Home = () => {
                 <Instant />
                 <TopMarket />
                 <CreateProfile />
-                <DownloadApp />
+                {/* <DownloadApp /> */}
                 <Benefit />
                 {/* <Investor /> */}
                 <StartMining />

@@ -1,21 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Navbar, NavbarBrand, NavLink, Dropdown, DropdownButton } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css"
 import { useSelector } from "react-redux";
 import { RiArrowUpSLine } from "react-icons/ri"
 import { FaFacebookF, FaInstagramSquare, FaYoutube, FaTwitter, FaLinkedin, FaWindows, FaAppStoreIos, FaApple, FaGooglePlay } from "react-icons/fa";
 const Footer = (props) => {
     const { isAuth } = useSelector((state) => state.user);
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="footer ">
                 {isAuth ? <div className="navigation-login">
                     <div className="first">
-                        <Link to="">
-                            <img alt="" src="image/header-logo.png" />
+                        <NavbarBrand href="/">
+                            <img alt="" src="image/logo.png" />
                             <p>Crypto Trustable</p>
-                        </Link>
-                        <div className="download-wrap ">
+                        </NavbarBrand>
+                        {/* <div className="download-wrap ">
                             <div className="download-item">
                                 <FaWindows />
                                 <div className="download-item-inner">
@@ -29,7 +32,6 @@ const Footer = (props) => {
                                     <p>Download on the</p>
                                     <h5>Windows</h5>
                                 </div>
-
                             </div>
                             <div className="download-item">
                                 <FaApple />
@@ -37,7 +39,6 @@ const Footer = (props) => {
                                     <p>Download for the</p>
                                     <h5>Mac OS</h5>
                                 </div>
-
                             </div>
                             <div className="download-item">
                                 <FaGooglePlay />
@@ -46,9 +47,9 @@ const Footer = (props) => {
                                     <h5>Google Play</h5>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="navigation-login-inner">
+                    {/* <div className="navigation-login-inner">
                         <div className="exchange">
                             <h5>Exchange</h5>
                             <a>Exchange Home</a>
@@ -88,8 +89,8 @@ const Footer = (props) => {
                                 </div>
                                 <button>Send</button>
                             </div>
-                            {/* <h4>We accept following payment systems</h4> */}
-                            {/* <div className="payment-wrap">
+                            <h4>We accept following payment systems</h4>
+                            <div className="payment-wrap">
                                 <div className="payment">
                                     <img alt="" src="image/footer/paypal.svg" />
                                 </div>
@@ -102,26 +103,20 @@ const Footer = (props) => {
                                 <div className="payment">
                                     <img alt="" src="image/footer/visa.svg" />
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div> :
                     <div className="d-flex navigation">
                         <div className="first">
-                            <Link to="">
-                                <img alt="" src="image/header-logo.png" />
+                            <NavbarBrand href="/">
+                                <img alt="" src="image/logo.png" />
                                 <p>Crypto Trustable</p>
-                            </Link>
-                            <p>Lorem ipsum dolor sit amet,consec egestas nisl condimentum.adipiscing elit. Nibh aenean aliquet amet, neque sit maecenas. Lorem sed egestas nisl condimentum.</p>
-                            <div className="social-network">
-                                <FaFacebookF />
-                                <FaInstagramSquare />
-                                <FaYoutube />
-                                <FaTwitter />
-                                <FaLinkedin />
-                            </div>
+                            </NavbarBrand>
+                            {/* <p>Lorem ipsum dolor sit amet,consec egestas nisl condimentum.adipiscing elit. Nibh aenean aliquet amet, neque sit maecenas. Lorem sed egestas nisl condimentum.</p> */}
+
                         </div>
-                        <div className="exchange">
+                        {/* <div className="exchange">
                             <h5>Exchange</h5>
                             <a>Exchange Home</a>
                             <a>Margin Tranding</a>
@@ -160,7 +155,7 @@ const Footer = (props) => {
                             <a>Security</a>
                             <a>Community</a>
                             <a>Announcements</a>
-                        </div>
+                        </div> */}
                     </div>
                 }
 
@@ -170,52 +165,17 @@ const Footer = (props) => {
                     </a>
                 </div>
                 <div className="bottom row">
-                    <div className="col-6 left">
-                        <p className="year">© 2022 dynamic. All rights reserved</p>
-                        <a className="privacy">Parivacy</a>
-                        <a className="terms">Terms</a>
-                        <a className="">Sitemap</a>
+                    <div className="col-9 left">
+                        <p className="year">© 2022. All rights reserved</p>
+                        <a className="privacy">Contact us anytime at - cryptotrustable@gmail.com or via live chat !</a>
+
                     </div>
-                    {isAuth ?
-                        <div className="social-network-login col-6">
-                            <FaFacebookF />
-                            <FaInstagramSquare />
-                            <FaYoutube />
-                            <FaTwitter />
-                            <FaLinkedin />
-                        </div>
-                        : <div className="download-wrap col-6 right">
-                            <div className="download-item">
-                                <FaWindows />
-                                <div className="download-item-inner">
-                                    <p>Download PC-Client</p>
-                                    <h5>Windows</h5>
-                                </div>
-                            </div>
-                            <div className="download-item">
-                                <FaAppStoreIos />
-                                <div className="download-item-inner">
-                                    <p>Download on the</p>
-                                    <h5>Windows</h5>
-                                </div>
+                    <div className="social-network-login col-3">
+                        <a href="https://facebook.com/CryptoTrustable" target="_blank"><FaFacebookF /></a>
+                        <a href="https://instagram.com/CryptoTrustable" target="_blank"><FaInstagramSquare /></a>
+                        <a href="https://twitter.com/TrustableCrypto" target="_blank"><FaTwitter /></a>
+                    </div>
 
-                            </div>
-                            <div className="download-item">
-                                <FaApple />
-                                <div className="download-item-inner">
-                                    <p>Download for the</p>
-                                    <h5>Mac OS</h5>
-                                </div>
-
-                            </div>
-                            <div className="download-item">
-                                <FaGooglePlay />
-                                <div className="download-item-inner">
-                                    <p>Get in on</p>
-                                    <h5>Google Play</h5>
-                                </div>
-                            </div>
-                        </div>}
                 </div>
             </div>
         </>

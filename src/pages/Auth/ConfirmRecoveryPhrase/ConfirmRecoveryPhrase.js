@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { attemptVerifyRecoveryPhrase } from "../../../store/thunks/auth";
 import { recoveryPhraseVerify } from "../../../store/actions/user";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./style.css"
 
 const ConfirmRecoveryPhrase = () => {
@@ -18,6 +20,8 @@ const ConfirmRecoveryPhrase = () => {
     const onWordChange = (e, index) => {
         phraseWord[index] = e.target.value;
     }
+    const recoveryPhraseIncorrect = () => toast.error("recovery phrase is not correct.");
+    const userNameIncorrect = () => toast.error("Username is not correct.");
     const verify = () => {
         dispatch(attemptVerifyRecoveryPhrase(sendVerifyData)).then((res) => {
             if (res.status === 200) {
@@ -27,17 +31,17 @@ const ConfirmRecoveryPhrase = () => {
         }).catch(({ response }) => {
             console.log(response, "error");
             if (response.status === 404) {
-                alert("user is not sign up.");
+                userNameIncorrect();
             }
             if (response.status === 400) {
-                alert("recovery phrase is incorrect.");
+                recoveryPhraseIncorrect();
             }
-
         })
     }
     return (
         <>
             <div className="confirm-recovery-phrase">
+                <ToastContainer limit={3} autoClose={3000} hideProgressBar={true} theme="colored" />
                 <div className="logo">
                     <Link to="/">
                         <img alt="" src="image/header-logo.png" />

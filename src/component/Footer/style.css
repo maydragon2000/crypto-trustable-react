@@ -5,7 +5,6 @@
 
 .footer .navigation {
     padding-bottom: 30px;
-    border-bottom: solid 1px grey;
 }
 
 .footer .first {
@@ -20,11 +19,12 @@
     height: 50px;
     text-decoration: none;
     width: fit-content;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .footer .first a img {
-    width: 40px;
+    width: 50px;
+    margin-right: 5px;
 }
 
 .footer .first a p {
@@ -80,7 +80,7 @@
 }
 
 .footer .bottom {
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .footer .bottom p {

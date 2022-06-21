@@ -70,3 +70,8 @@
     line-height: 22px;
     margin-bottom: 0px;
 }
+
+.benefit .services .service-item p a {
+    text-decoration: none;
+    margin-right: 10px;
+}

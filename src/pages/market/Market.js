@@ -569,10 +569,10 @@ const Market = () => {
                         </div>
                     </div>
                     <div className="topcoin-wrap">
-                        <SingleCoin coinName="Bitcoin" logogram="BTC" price="38,447.54" />
-                        <SingleCoin coinName="Binance" logogram="BNB" price="38,447.54" />
-                        <SingleCoin coinName="Ethereum" logogram="ETH" price="38,447.54" />
-                        <SingleCoin coinName="XRP" logogram="XRP" price="38,447.54" />
+                        <SingleCoin coinName="Bitcoin" coinId={1} logogram="BTC" price="38,447.54" />
+                        <SingleCoin coinName="Binance" coinId={1839} logogram="BNB" price="38,447.54" />
+                        <SingleCoin coinName="Ethereum" coinId={1027} logogram="ETH" price="38,447.54" />
+                        <SingleCoin coinName="XRP" coinId={52} logogram="XRP" price="38,447.54" />
                     </div>
                 </div>
                 <div className="d-flex" style={{ width: "100%", justifyContent: "space-between" }}>

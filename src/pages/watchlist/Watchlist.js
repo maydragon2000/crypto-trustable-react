@@ -153,17 +153,23 @@ const Watchlist = () => {
                             <h1>Watchlist</h1>
                             <p>Update 16/02/2022 at 02:30 PM</p>
                         </div>
+                        {/* <div className="add-coin-button-wrap">
+                            <button onClick={onOpenModal}>
+                                <GoPlus />
+                                Add Coin
+                            </button>
+                        </div> */}
+                    </div>
+                    <div className="watchlist-left-filter">
+                        {/* <div className="button-wrap">
+                            <TableFilterCategory name="Watchlist" type="login" />
+                            <button><GoPlus /></button>
+                        </div> */}
                         <div className="add-coin-button-wrap">
                             <button onClick={onOpenModal}>
                                 <GoPlus />
                                 Add Coin
                             </button>
-                        </div>
-                    </div>
-                    <div className="watchlist-left-filter">
-                        <div className="button-wrap">
-                            <TableFilterCategory name="Watchlist" type="login" />
-                            <button><GoPlus /></button>
                         </div>
                         <div className="search-wrap">
                             <GoSearch />

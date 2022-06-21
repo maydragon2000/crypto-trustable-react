@@ -17,10 +17,12 @@
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    flex-wrap: wrap;
 }
 
 .home-top-market .coin-wrap-animation {
     width: 23%;
+    margin-bottom: 30px;
 }
 
 .home-top-market .coin-wrap {
@@ -36,6 +38,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.home-top-market .coin-wrap .coin-name img {
+    width: 50px;
+    height: 51px;
+    border-radius: 50px;
 }
 
 .home-top-market .coin-wrap h5 {

@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import "./style.css"
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Error from "../../../component/Error/Error"
-import { useDispatch } from "react-redux";
-import { saveRegisterData } from "../../../store/actions/user";
+import { useDispatch, useSelector } from "react-redux";
+import { saveRegisterData, setResponseStatus } from "../../../store/actions/user";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./style.css"
 const Register = (props) => {
+    const { responseStatus } = useSelector((state) => state.user);
+
     const [passwordShow, setPasswordShow] = useState(false);
     const [passwordConfirmShow, setPasswordConfirmWrap] = useState(false);
+    const [agreeChecked, setAgreeChecked] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
+
     const initialValues = {
         userName: "",
         password: "",
@@ -21,6 +27,13 @@ const Register = (props) => {
         password: Yup.string().min(5).max(255).required("Password is Required"),
         passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').min(5).max(255).required("Coinfirm Password is Required")
     });
+    const userNameExited = () => toast.error("Username is already exited. Please use another username.");
+    useEffect(() => {
+        if (responseStatus === "userName already exited") {
+            userNameExited();
+            dispatch(setResponseStatus(""));
+        }
+    }, [])
     const onSubmit = (values) => {
         dispatch(saveRegisterData(values));
         navigate("/RecoveryPhrase")
@@ -34,6 +47,7 @@ const Register = (props) => {
             {(formik) => {
                 return (
                     <>
+                        <ToastContainer limit={3} autoClose={5000} hideProgressBar={true} theme="colored" />
                         <div className="register">
                             <div className="logo">
                                 <Link to="/">
@@ -71,11 +85,11 @@ const Register = (props) => {
                                         <ErrorMessage name="passwordConfirm" component={Error} />
                                     </div>
                                     <div className="register-agree-wrap">
-                                        <input type="checkbox" />
+                                        <input checked={agreeChecked} onChange={() => setAgreeChecked(!agreeChecked)} type="checkbox" />
                                         <p>By Register i agree that i’m 18 years of age or older, ot the<Link to="">User Agreements, Privacy Policy, Cookie Policy.</Link></p>
                                     </div>
                                     <div>
-                                        <button type="submit" disabled={!formik.dirty || !formik.isValid || loading} to="" className="btn sign-up-button">Register</button>
+                                        <button type="submit" disabled={!formik.dirty || !formik.isValid || loading || !agreeChecked} to="" className="btn sign-up-button">Register</button>
                                     </div>
                                     <div className="go-login-wrap">
                                         <h5>Already have an account?</h5>

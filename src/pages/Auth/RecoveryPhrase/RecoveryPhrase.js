@@ -3,13 +3,16 @@ import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { attemptRegister } from "../../../store/thunks/auth";
 import wordData from "./words.json";
-import "./style.css"
+import { setResponseStatus } from "../../../store/actions/user";
+import "./style.css";
+
 const RecoveryPhrase = () => {
     var { registerData } = useSelector((state) => state.user);
     var phrase = [];
     var randomNumber = 0;
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     for (let i = 0; i < 12; i++) {
         randomNumber = Math.floor(Math.random() * 1001);
         phrase.push(wordData.words[randomNumber]);
@@ -18,13 +21,14 @@ const RecoveryPhrase = () => {
         registerData = { ...registerData, recoveryPhrase: phrase };
         dispatch(attemptRegister(registerData))
             .then((res) => {
-                alert("success");
+                dispatch(setResponseStatus("success register"))
                 navigate("/Login")
             })
             .catch((error) => {
                 if (error.response) {
                     if (error.response.status === 400) {
-                        alert("your userName already exists. Please recreate you account.");
+
+                        dispatch(setResponseStatus("userName already exited"))
                         navigate("/Register");
                     }
                 }
@@ -39,6 +43,7 @@ const RecoveryPhrase = () => {
                         <p>Crypto Trustable</p>
                     </Link>
                 </div>
+
                 <div className="recovery-phrase-inner">
                     <h1>Secrect Recovery Phrase</h1>
                     <div className="sub-title">
