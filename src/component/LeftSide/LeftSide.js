@@ -51,7 +51,7 @@ const LeftSide = () => {
                         setIsVisible(!isVisible);
                     }}
                 />
-                <img className="avatar" onClick={handleClick} alt="not fount" src={selectedImage ? URL.createObjectURL(selectedImage) : uploadedImage === undefined ? "/image/user.jpg" : `http://127.0.0.1:5000/images/${uploadedImage}`} />
+                <img className="avatar" onClick={handleClick} alt="not fount" src={selectedImage ? URL.createObjectURL(selectedImage) : uploadedImage === undefined ? "/image/user.jpg" : `http://141.95.9.74:5000/images/${uploadedImage}`} />
                 <button disabled={disable} className="btn save-uploadImage" onClick={sendUploadImage}>Save</button>
                 <input type="file"
                     style={{ display: "none" }}
