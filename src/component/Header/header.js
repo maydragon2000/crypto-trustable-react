@@ -36,7 +36,7 @@ const Header = (props) => {
                     <div className="button-wrap">
                         <Link to="/profile/walletHistory/Bitcoin/1" style={{ display: !isAuth ? "none" : "flex" }} className="trade-history-button"><img alt="" src="/image/trade-history.svg" />History</Link>
                         <Link to="/profile/wallet" style={{ display: !isAuth ? "none" : "flex" }} className="wallet-button"><img alt="" src="/image/wallet.svg" /> Wallet</Link>
-                        <Link to="/profile" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src={user === undefined || user === null ? "" : user.image === undefined ? "/image/user.jpg" : `http://141.95.9.74:5000/images/${user.image}`} /></Link>
+                        <Link to="/profile" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src={user === undefined || user === null ? "" : user.image === undefined ? "/image/user.jpg" : `${process.env.REACT_APP_SERVER_HOST}:5000/images/${user.image}`} /></Link>
                         <DropdownButton style={{ display: !isAuth ? "none" : "flex" }} id="dropdown-item-button" title="Allie Grater">
                             <Dropdown.Item as="button" onClick={goProfile}>Profile</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => logOut()}>Log Out</Dropdown.Item>
