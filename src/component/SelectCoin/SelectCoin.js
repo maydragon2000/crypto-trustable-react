@@ -9,7 +9,6 @@ const SelectCoin = ({ marketData, label, placeholder, initialId }) => {
         })
     })
     const [coinValue, setCoinValue] = useState(undefined);
-    const [isOpen, setIsOpen] = useState(false);
     return (
         <>
             <section className="coin-selection-wrap">
@@ -18,7 +17,7 @@ const SelectCoin = ({ marketData, label, placeholder, initialId }) => {
                     <input type="text" placeholder={placeholder} />
                 </div>
                 <div className="select-wrap">
-                    <SearchDropdown isOpen={isOpen} setIsOpen={setIsOpen} image={marketData[initialId].id} type="coin" name={marketData[initialId].name.logogram} options={selectList} value={coinValue} setValue={setCoinValue} />
+                    <SearchDropdown image={marketData[initialId].id} type="coin" name={marketData[initialId].name.logogram} options={selectList} value={coinValue} setValue={setCoinValue} />
                 </div>
             </section>
         </>

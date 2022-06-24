@@ -65,26 +65,32 @@ const Svg = p => (
 const { colors } = defaultTheme;
 const SearchDropdown = ({ name, type, options, value, setValue, image, isOtherOpen, setIsOtherOpen }) => {
     const [isOpen, setIsOpen] = useState(false);
+
     const [currentCategory, setCurrentCategory] = useState(false);
-    console.log(isOpen, isOtherOpen, `value${name}`);
-    console.log(currentCategory, `currentCategory${name}`);
+    const [currentCategoryChange, setCurrentCategoryChange] = useState(false);
+
     const selectStyles = {
         control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
         menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
     };
     useEffect(() => {
-        if (isOtherOpen === true && !currentCategory) {
-            console.log("here arrived");
-            setIsOpen(false);
-        }
-        // if (isOtherOpen === false) {
-        //     setIsOpen(false);
-        // }
+        setIsOpen(false);
     }, [isOtherOpen]);
+    useEffect(() => {
+        if (currentCategory === true) {
+            setIsOpen(!isOpen);
+        }
+    }, [currentCategoryChange])
     const toggleOpen = () => {
-        setIsOtherOpen(true);
-        setCurrentCategory(true);
-        setIsOpen(!isOpen);
+        if (type === "coin") {
+            setIsOpen(!isOpen);
+        }
+        else {
+            setIsOtherOpen(!isOtherOpen);
+            setCurrentCategory(true);
+            setCurrentCategoryChange(!currentCategoryChange);
+        }
+
     }
     const onSelectChange = (value) => {
         toggleOpen();
