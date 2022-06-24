@@ -30,7 +30,9 @@ const Login = (props) => {
     const userNameIncorrect = () => toast.error("Username is not correct.");
     const successRegister = () => toast.success(({ closeToast }) => <div><label>Success Register.</label><label> Please Sign In Now</label></div>);
     const successUpdatePassword = () => toast.success("Success Update New Password.");
+    const ServerError = () => toast.error("Server Connection Error. Please try again.");
     useEffect(() => {
+        console.log("this is useEffect1")
         if (responseStatus === "success register") {
             dispatch(setResponseStatus(""));
             successRegister();
@@ -39,7 +41,7 @@ const Login = (props) => {
             dispatch(setResponseStatus(""));
             successUpdatePassword();
         }
-    }, [])
+    })
     const onSubmit = (values) => {
         setLoading(true);
         dispatch(attemptLogin(values)).then((response) => {
@@ -51,6 +53,9 @@ const Login = (props) => {
             }
             if (response === 404) {
                 userNameIncorrect();
+            }
+            if (response === 500) {
+                serverError();
             }
             setLoading(false);
         }).catch(({ response }) => {

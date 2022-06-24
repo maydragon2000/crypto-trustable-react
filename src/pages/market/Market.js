@@ -537,16 +537,13 @@ const Market = () => {
     const [algorithmValue, setAlgorithmValue] = useState(undefined);
     const [platformValue, setPlatformValue] = useState(undefined);
     const [industryValue, setIndustryValue] = useState(undefined);
+    const [isOtherOpen, setIsOtherOpen] = useState(false);
     const clearFilter = () => {
         setCategoryValue(undefined);
         setAlgorithmValue(undefined);
         setPlatformValue(undefined);
         setIndustryValue(undefined);
     }
-    const [categoryIsOpen, setCategoryIsOpen] = useState(false);
-    const [algorithmIsOpen, setAlgorithmIsOpen] = useState(false);
-    const [platformIsOpen, setplatformIsOpen] = useState(false);
-    const [industryIsOpen, setindustryIsOpen] = useState(false);
     return (
         <>
             <div className="market">
@@ -602,16 +599,16 @@ const Market = () => {
                         </div>
                         <div className="toolbar row">
                             {isAuth ? <div className="left-login col-6">
-                                <SearchDropdown isOpen={categoryIsOpen} setIsOpen={setCategoryIsOpen} setAlgorithmIsOpen={setAlgorithmIsOpen} setindustryIsOpen={setindustryIsOpen} setplatformIsOpen={setplatformIsOpen} options={platformList} value={categoryValue} setValue={setCategoryValue} type="login" name="Category" />
-                                <SearchDropdown isOpen={algorithmIsOpen} setCategoryIsOpen={setCategoryIsOpen} setIsOpen={setAlgorithmIsOpen} setindustryIsOpen={setindustryIsOpen} setplatformIsOpen={setplatformIsOpen} options={platformList} value={algorithmValue} setValue={setAlgorithmValue} type="login" name="Algorithm" />
-                                <SearchDropdown isOpen={platformIsOpen} setCategoryIsOpen={setCategoryIsOpen} setAlgorithmIsOpen={setAlgorithmIsOpen} setindustryIsOpen={setindustryIsOpen} setIsOpen={setplatformIsOpen} options={platformList} value={platformValue} setValue={setPlatformValue} type="login" name="Platform" />
-                                <SearchDropdown isOpen={industryIsOpen} setCategoryIsOpen={setCategoryIsOpen} setAlgorithmIsOpen={setAlgorithmIsOpen} setIsOpen={setindustryIsOpen} setplatformIsOpen={setplatformIsOpen} options={platformList} value={industryValue} setValue={setIndustryValue} type="login" name="Industry" />
+                                <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={categoryValue} setValue={setCategoryValue} type="login" name="Category" />
+                                <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={algorithmValue} setValue={setAlgorithmValue} type="login" name="Algorithm" />
+                                <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={platformValue} setValue={setPlatformValue} type="login" name="Platform" />
+                                <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={industryValue} setValue={setIndustryValue} type="login" name="Industry" />
                             </div> :
                                 <div className="left col-6">
-                                    <SearchDropdown isOpen={categoryIsOpen} setIsOpen={setCategoryIsOpen} setAlgorithmIsOpen={setAlgorithmIsOpen} setindustryIsOpen={setindustryIsOpen} setplatformIsOpen={setplatformIsOpen} options={platformList} value={categoryValue} setValue={setCategoryValue} type="normal" name="Category" />
-                                    <SearchDropdown isOpen={algorithmIsOpen} setCategoryIsOpen={setCategoryIsOpen} setIsOpen={setAlgorithmIsOpen} setindustryIsOpen={setindustryIsOpen} setplatformIsOpen={setplatformIsOpen} options={platformList} value={algorithmValue} setValue={setAlgorithmValue} type="normal" name="Algorithm" />
-                                    <SearchDropdown isOpen={platformIsOpen} setCategoryIsOpen={setCategoryIsOpen} setAlgorithmIsOpen={setAlgorithmIsOpen} setindustryIsOpen={setindustryIsOpen} setIsOpen={setplatformIsOpen} options={platformList} value={platformValue} setValue={setPlatformValue} type="normal" name="Platform" />
-                                    <SearchDropdown isOpen={industryIsOpen} setCategoryIsOpen={setCategoryIsOpen} setAlgorithmIsOpen={setAlgorithmIsOpen} setIsOpen={setindustryIsOpen} setplatformIsOpen={setplatformIsOpen} options={platformList} value={industryValue} setValue={setIndustryValue} type="normal" name="Industry" />
+                                    <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={categoryValue} setValue={setCategoryValue} type="normal" name="Category" />
+                                    <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={algorithmValue} setValue={setAlgorithmValue} type="normal" name="Algorithm" />
+                                    <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={platformValue} setValue={setPlatformValue} type="normal" name="Platform" />
+                                    <SearchDropdown isOtherOpen={isOtherOpen} setIsOtherOpen={setIsOtherOpen} options={platformList} value={industryValue} setValue={setIndustryValue} type="normal" name="Industry" />
                                 </div>
                             }
                             <div className="right col-6">

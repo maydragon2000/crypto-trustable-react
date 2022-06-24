@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
 import { GoPlus, GoSearch } from "react-icons/go";
 import TableFilterCategory from "../../component/TableFilterCategory/TableFilterCategory";
 import MarketTable from "../../component/MarketTable/MarketTable";
 import ExchangeCoin from "../../component/ExchangeCoin/ExchangeCoin";
 import AddCoinModal from "../../component/AddCoinModal/AddCoinModal";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import "./style.css";
 const Watchlist = () => {
     const [marketData, setMarketData] = useState([{
         name: {
@@ -137,7 +139,13 @@ const Watchlist = () => {
         increase: true
     },]);
     const [modalShow, setModalShow] = useState(false);
-
+    const navigate = useNavigate();
+    const { isAuth } = useSelector(state => state.user);
+    useEffect(() => {
+        if (isAuth === false) {
+            navigate('/login');
+        }
+    })
     const onOpenModal = () => {
         setModalShow(true);
     }

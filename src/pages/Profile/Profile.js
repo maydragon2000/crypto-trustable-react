@@ -44,11 +44,17 @@ const Profile = () => {
         setDisable(true);
     }
     const saveChange = () => {
+        setDisable(true);
         dispatch(attemptResetUser(sendUpdateUser)).then((res) => {
-            if (res === true)
+            if (res === true) {
                 success();
+                setEdit(false)
+
+            }
+            setDisable(false)
         }).catch((response) => {
             console.log(response, "response profile");
+            setDisable(false);
         })
     }
 

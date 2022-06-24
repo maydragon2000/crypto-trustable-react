@@ -24,7 +24,6 @@ import Bonus from './pages/Bonus/Bonus';
 const history = createBrowserHistory();
 const store = configureStore(history);
 function App() {
-  console.log(process.env.REACT_APP_SERVER_HOST, "process.env.COINMARKETCAP_API_KEY")
   return (
     <div className="App">
       <Provider store={store}>

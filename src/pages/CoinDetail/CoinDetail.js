@@ -215,28 +215,11 @@ const CoinDetail = () => {
                         <Tabs default={1}>
                             <TabList>
                                 <Tab>Send BTC</Tab>
-                                <Tab>Receive BTC</Tab>
+                                {/* <Tab>Receive BTC</Tab> */}
                             </TabList>
                             <TabPanel>
                                 <div className="buy-content">
-                                    {/* <div className="first row">
-                                        <div className="col-6">
-                                            <button onClick={() => limitChecked()}>
-                                                <input type="radio" readOnly checked={LimitCheck} name="fav_language" />
-                                                <FaFlag />
-                                                Limit
-                                            </button>
-                                            <p><img alt="" src="image/wallet.svg" />$38,447.54</p>
-                                        </div>
-                                        <div className="col-6">
-                                            <button onClick={() => marketChecked()}>
-                                                <input type="radio" readOnly checked={!LimitCheck} name="fav_language" />
-                                                <BsFillLightningChargeFill />
-                                                Market
-                                            </button>
-                                            <p><img alt="" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" />$38,447.54</p>
-                                        </div>
-                                    </div> */}
+
                                     <SelectCoin label="Quantity(BTC)" placeholder="$0" marketData={marketData} initialId={0} />
 
                                     <div className="coin-selection-wrap ">
@@ -249,26 +232,9 @@ const CoinDetail = () => {
                                     <button className="buy-button">Send BTC</button>
                                 </div>
                             </TabPanel>
-                            <TabPanel>
+                            {/* <TabPanel>
                                 <div className="buy-content">
-                                    {/* <div className="first row">
-                                        <div className="col-6">
-                                            <button onClick={() => limitChecked()}>
-                                                <input type="radio" readOnly checked={LimitCheck} name="fav_language" />
-                                                <FaFlag />
-                                                Limit
-                                            </button>
-                                            <p><img alt="" src="image/wallet.svg" />$38,447.54</p>
-                                        </div>
-                                        <div className="col-6">
-                                            <button onClick={() => marketChecked()}>
-                                                <input type="radio" readOnly checked={!LimitCheck} name="fav_language" />
-                                                <BsFillLightningChargeFill />
-                                                Market
-                                            </button>
-                                            <p><img alt="" src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" />$38,447.54</p>
-                                        </div>
-                                    </div> */}
+                                    
                                     <SelectCoin label="Quantity(BTC)" placeholder="$0" marketData={marketData} initialId={0} />
 
                                     <div className="coin-selection-wrap ">
@@ -280,7 +246,7 @@ const CoinDetail = () => {
                                     <p className="total">Total: (+Fee 0.2) 0.00</p>
                                     <button className="buy-button">Receive BTC</button>
                                 </div>
-                            </TabPanel>
+                            </TabPanel> */}
                         </Tabs>
                     </div>
                 </div>

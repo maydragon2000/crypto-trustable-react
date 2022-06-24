@@ -29,8 +29,11 @@ const RecoveryPhrase = () => {
                     if (error.response.status === 400) {
 
                         dispatch(setResponseStatus("userName already exited"))
-                        navigate("/Register");
                     }
+                    else {
+                        dispatch(setResponseStatus("server connection error"));
+                    }
+                    navigate("/Register");
                 }
             });
     }

@@ -24,8 +24,10 @@ export const attemptLogin = (user) => (dispatch) =>
   }).catch(({ response }) => {
     if (response.status === 400)
       return 400
-    if (response.status === 404)
+    else if (response.status === 404)
       return 404
+    else return 500
+
   });
 
 export const attemptResetPassword = (user) => (dispatch) =>

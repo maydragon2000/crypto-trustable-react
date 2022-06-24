@@ -22,7 +22,7 @@ const Header = (props) => {
     return (
         <>
             <div id="header" className="header">
-                <Navbar style={{ backgroundColor: isAuth ? "#121318" : "black" }} expand="lg" >
+                <Navbar style={{ backgroundColor: "#121318" }} expand="lg" >
                     <NavbarBrand href="/">
                         <img alt="" src="/image/logo.png" />
                         <p>Crypto Trustable</p>
@@ -36,8 +36,8 @@ const Header = (props) => {
                     <div className="button-wrap">
                         <Link to="/profile/walletHistory/Bitcoin/1" style={{ display: !isAuth ? "none" : "flex" }} className="trade-history-button"><img alt="" src="/image/trade-history.svg" />History</Link>
                         <Link to="/profile/wallet" style={{ display: !isAuth ? "none" : "flex" }} className="wallet-button"><img alt="" src="/image/wallet.svg" /> Wallet</Link>
-                        <Link to="/profile" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src={user === undefined || user === null ? "" : user.image === undefined ? "/image/user.jpg" : `${process.env.REACT_APP_SERVER_HOST}:5000/images/${user.image}`} /></Link>
-                        <DropdownButton style={{ display: !isAuth ? "none" : "flex" }} id="dropdown-item-button" title="Allie Grater">
+                        <Link to="/profile" style={{ display: !isAuth ? "none" : "flex" }} className="user-picture"><img alt="" src={!user ? "" : !user.image ? "/image/user.jpg" : `${process.env.REACT_APP_SERVER_IMAGE_URL}${user.image}`} /></Link>
+                        <DropdownButton style={{ display: !isAuth ? "none" : "flex" }} id="dropdown-item-button" title={!user ? "" : user.name}>
                             <Dropdown.Item as="button" onClick={goProfile}>Profile</Dropdown.Item>
                             <Dropdown.Item as="button" onClick={() => logOut()}>Log Out</Dropdown.Item>
                         </DropdownButton>

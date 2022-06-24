@@ -4,8 +4,9 @@
 
 .header .navbar {
     height: 120px;
-    justify-content: space-around;
+    justify-content: space-between;
     font-family: Inter;
+    padding: 0px 80px 0px 50px;
 }
 
 .header .navbar-brand {

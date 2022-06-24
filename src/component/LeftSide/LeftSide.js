@@ -35,11 +35,15 @@ const LeftSide = () => {
     const success = () => toast.success("Success Save New Avatar.");
     const failed = () => toast.error("Error Save New Avatar.")
     const sendUploadImage = () => {
+        setDisable(true);
         dispatch(attemptUploadImage(sendImageData)).then((res) => {
-            if (res === true)
+            if (res === true) {
                 success();
+            }
+            setDisable(false);
         }).catch((res) => {
             failed();
+            setDisable(false)
         })
     }
     return (
@@ -51,7 +55,7 @@ const LeftSide = () => {
                         setIsVisible(!isVisible);
                     }}
                 />
-                <img className="avatar" onClick={handleClick} alt="not fount" src={selectedImage ? URL.createObjectURL(selectedImage) : uploadedImage === undefined ? "/image/user.jpg" : `${process.env.REACT_APP_SERVER_HOST}:5000/images/${uploadedImage}`} />
+                <img className="avatar" onClick={handleClick} alt="not found" src={selectedImage ? URL.createObjectURL(selectedImage) : !uploadedImage ? "/image/user.jpg" : `${process.env.REACT_APP_SERVER_IMAGE_URL}${uploadedImage}`} />
                 <button disabled={disable} className="btn save-uploadImage" onClick={sendUploadImage}>Save</button>
                 <input type="file"
                     style={{ display: "none" }}
@@ -63,8 +67,8 @@ const LeftSide = () => {
                         })
                         setSelectedImage(event.target.files[0]);
                     }} />
-                <h2>Allie Grater</h2>
-                <p>AllieGrater12345644@</p>
+                <h2>{user?.name ?? ""}</h2>
+                <p>{user?.displayName ?? ""}</p>
                 <SideNav.Nav defaultSelected="profile">
                     <NavItem eventKey="profile" onClick={() => navigate("/profile")}>
                         <NavIcon>

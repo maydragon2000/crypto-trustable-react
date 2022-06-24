@@ -1,9 +1,9 @@
-import React from "react";
-import "./style.css"
+import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 import { defaultTheme } from 'react-select';
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri"
 import { Link } from "react-router-dom";
+import "./style.css"
 const Dropdown = ({ children, isOpen, target, onClose }) => (
     <div css={{ position: 'relative' }}>
         {target}
@@ -63,39 +63,34 @@ const Svg = p => (
     />
 );
 const { colors } = defaultTheme;
-const SearchDropdown = ({ name, type, options, value, setValue, image, isOpen, setIsOpen, setCategoryIsOpen, setAlgorithmIsOpen, setindustryIsOpen, setplatformIsOpen }) => {
-
+const SearchDropdown = ({ name, type, options, value, setValue, image, isOtherOpen, setIsOtherOpen }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [currentCategory, setCurrentCategory] = useState(false);
+    console.log(isOpen, isOtherOpen, `value${name}`);
+    console.log(currentCategory, `currentCategory${name}`);
     const selectStyles = {
         control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
         menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
     };
+    useEffect(() => {
+        if (isOtherOpen === true && !currentCategory) {
+            console.log("here arrived");
+            setIsOpen(false);
+        }
+        // if (isOtherOpen === false) {
+        //     setIsOpen(false);
+        // }
+    }, [isOtherOpen]);
     const toggleOpen = () => {
-        if (name === "Category") {
-            setAlgorithmIsOpen(false);
-            setindustryIsOpen(false);
-            setplatformIsOpen(false);
-        }
-        if (name === "Algorithm") {
-            setCategoryIsOpen(false);
-            setindustryIsOpen(false);
-            setplatformIsOpen(false);
-        }
-        if (name === "Platform") {
-            setAlgorithmIsOpen(false);
-            setindustryIsOpen(false);
-            setCategoryIsOpen(false);
-        }
-        if (name === "Industry") {
-            setAlgorithmIsOpen(false);
-            setCategoryIsOpen(false);
-            setplatformIsOpen(false);
-        }
+        setIsOtherOpen(true);
+        setCurrentCategory(true);
         setIsOpen(!isOpen);
     }
     const onSelectChange = (value) => {
         toggleOpen();
         setValue(value);
     }
+
     return (
         <>
             <Dropdown
