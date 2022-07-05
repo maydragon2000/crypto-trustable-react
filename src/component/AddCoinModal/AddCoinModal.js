@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import Select, { defaultTheme } from "react-select"
 import "./style.css"
-const AddCoinModal = ({ modalShow, onCloseModal }) => {
+const AddCoinModal = ({ modalShow, onCloseModal, selectedValue, setSelectedValue }) => {
     const [marketData, setMarketData] = useState([{
         name: {
             image: "bitcoin",
@@ -10,11 +10,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             logogram: "BTC"
         },
         id: 1,
-        price: "$43,975.72",
-        percent: "+0.60%",
-        highPrice: "$44,727.80	",
-        lowPrice: "$43,318.64",
-        increase: true
     },
     {
         name: {
@@ -23,37 +18,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             logogram: "ETH"
         },
         id: 1027,
-        price: "$3,187.62",
-        percent: "-2.79%",
-        highPrice: "$3,263.16",
-        lowPrice: "$3,077.03",
-        increase: false
-    },
-    {
-        name: {
-            image: "xrp",
-            fullName: "XRP",
-            logogram: "XRP"
-        },
-        id: 52,
-        price: "$0.8721",
-        percent: "+1.40%",
-        highPrice: "$0.9091		",
-        lowPrice: "$0.8484	",
-        increase: true
-    },
-    {
-        name: {
-            image: "litecoin",
-            fullName: "Litecoin",
-            logogram: "LTC"
-        },
-        id: 2,
-        price: "$138.61",
-        percent: "+0.38%",
-        highPrice: "$140.79		",
-        lowPrice: "$136.92	",
-        increase: true
     },
     {
         name: {
@@ -62,24 +26,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             logogram: "MATIC"
         },
         id: 3890,
-        price: "$1.98",
-        percent: "+2.46%	",
-        highPrice: "$2.06		",
-        lowPrice: "$1.91",
-        increase: true
-    },
-    {
-        name: {
-            image: "solana",
-            fullName: "Solana",
-            logogram: "SOL"
-        },
-        id: 5426,
-        price: "$112.13",
-        percent: "+1.06%",
-        highPrice: "$116.83		",
-        lowPrice: "$110.66",
-        increase: true
     },
     {
         name: {
@@ -88,24 +34,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             logogram: "USDC"
         },
         id: 3408,
-        price: "$42164.54",
-        percent: "+7.76%",
-        highPrice: "$42164.54	",
-        lowPrice: "$42164.54",
-        increase: true
-    },
-    {
-        name: {
-            image: "cardano",
-            fullName: "Cardano",
-            logogram: "ADA"
-        },
-        id: 2010,
-        price: "$1.18",
-        percent: "-0.33%",
-        highPrice: "$1.21		",
-        lowPrice: "$1.21	",
-        increase: false
     },
     {
         name: {
@@ -114,11 +42,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             logogram: "USDT"
         },
         id: 825,
-        price: "$42164.54",
-        percent: "+7.76%",
-        highPrice: "$42164.54",
-        lowPrice: "$42164.54",
-        increase: true
     },
     {
         name: {
@@ -127,11 +50,6 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             logogram: "AVAX"
         },
         id: 5805,
-        price: "$89.62",
-        percent: "+2.44%",
-        highPrice: "$91.93	",
-        lowPrice: "$87.38	",
-        increase: true
     },]);
     let options = [];
     useEffect(() => {
@@ -139,7 +57,7 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
             options.push({ value: index + 1, label: item.name.logogram, image: item.id, fullName: item.name.fullName })
         })
     })
-    const [selectedValue, setSelectedValue] = useState(undefined);
+
     const onSelectChange = (value) => {
         setSelectedValue(value);
     }
@@ -164,14 +82,14 @@ const AddCoinModal = ({ modalShow, onCloseModal }) => {
                         formatOptionLabel={item => (<div className="coin-column"><img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.image}.png`} /><p>{item.fullName}</p>{item.label}</div>)}
                         placeholder="Search..."
                         tabSelectsValue={false}
-                        // value={selectedValue}
-                        // onChange={onSelectChange}
+                        value={selectedValue}
+                        onChange={onSelectChange}
                         autoFocus
                     // blurInputOnSelect
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className="footer-button">OK</button>
+                    <button className="footer-button" onClick={onCloseModal}>OK</button>
                 </Modal.Footer>
             </Modal>
         </>

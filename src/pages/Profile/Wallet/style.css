@@ -65,6 +65,26 @@
 .wallet-button-wrap {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.wallet-button-wrap P {
+    color: white;
+    margin-bottom: 0px;
+    display: flex;
+}
+
+.wallet-button-wrap .clip-button {
+    border: 0px;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 5px;
+}
+
+.wallet-button-wrap .clip-button svg {
+    width: 20px;
+    height: 20px;
 }
 
 .wallet-button-wrap button {

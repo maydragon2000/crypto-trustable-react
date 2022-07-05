@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddCoinModal from "../../../component/AddCoinModal/AddCoinModal";
 import { GoPlus } from "react-icons/go"
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { attemptGetWalletData, attemptSendWalletTokenList } from "../../../store/thunks/wallet"
 import "./style.css"
 const Wallet = () => {
+    const { walletAddress, walletData } = useSelector(state => state.wallet);
+    const { isAuth, user } = useSelector(state => state.user);
     const walletBalance = [
         {
             coinName: "Bitcoin",
@@ -41,8 +45,10 @@ const Wallet = () => {
             coinLogogram: "XRP"
         },
     ]
+    const [selectedValue, setSelectedValue] = useState(undefined);
     const [modalShow, setModalShow] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const onOpenModal = () => {
         setModalShow(true);
     }
@@ -52,6 +58,30 @@ const Wallet = () => {
     const onClickToken = (token) => {
         navigate(`/profile/walletHistory/${token.coinName}/${token.id}`);
     }
+    useEffect(() => {
+        if (!isAuth) {
+            navigate('/login');
+        }
+        if (isAuth)
+            dispatch(attemptGetWalletData(user.name))
+                .then((res) => {
+                    console.log("success");
+                })
+    }, []);
+    useEffect(() => {
+        if (!modalShow && selectedValue) {
+            const sendTokenList = selectedValue.map(item => item.label);
+            const sendData = { tokenlist: sendTokenList, userName: user.name };
+            dispatch(attemptSendWalletTokenList(sendData))
+                .then(res => {
+                    dispatch(attemptGetWalletData(user.name))
+                        .then((res) => {
+                            console.log("success");
+                        })
+                    setSelectedValue(undefined);
+                })
+        }
+    }, [modalShow]);
     return (
         <>
             <div className="wallet">
@@ -59,6 +89,7 @@ const Wallet = () => {
                     Wallet
                 </h1>
                 <div className="wallet-button-wrap">
+
                     <button onClick={onOpenModal}><GoPlus />Add Coin</button>
                 </div>
                 <table>
@@ -76,24 +107,29 @@ const Wallet = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            walletBalance.map((item, index) => <tr key={index} onClick={() => onClickToken(item)}>
-                                <td className="coinName">
-                                    <img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`} />
-                                    {item.coinName}
-                                </td>
-                                <td className="coin-available">
-                                    {item.available} {item.coinLogogram}
-                                </td>
-                                <td className="usd-valuation">
-                                    {item.usdValuatioin} USD
-                                </td>
-                            </tr>)
+                        {!walletData ? <>Loading</>
+                            : <>
+                                {
+                                    walletData.map((item, index) => <tr key={index} onClick={() => onClickToken(item)}>
+                                        <td className="coinName">
+                                            <img alt="" src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`} />
+                                            {item.name}
+                                        </td>
+                                        <td className="coin-available">
+                                            {(item.available).toFixed(5)} {item.symbol}
+                                        </td>
+                                        <td className="usd-valuation">
+                                            {(item.price * item.available).toFixed(2)} USD
+                                        </td>
+                                    </tr>)
+                                }
+                            </>
                         }
+
                     </tbody>
                 </table>
             </div>
-            <AddCoinModal modalShow={modalShow} onCloseModal={onCloseModal} />
+            <AddCoinModal selectedValue={selectedValue} setSelectedValue={setSelectedValue} modalShow={modalShow} onCloseModal={onCloseModal} />
         </>
     )
 }

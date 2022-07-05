@@ -10,9 +10,9 @@ const Header = (props) => {
     const { isAuth, user } = useSelector((state) => state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    console.log(isAuth, user, "header");
     const logOut = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("wallet");
         navigate("/");
         dispatch(logout());
     }

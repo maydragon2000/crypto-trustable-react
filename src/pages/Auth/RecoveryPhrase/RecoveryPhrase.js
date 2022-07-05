@@ -2,8 +2,9 @@ import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { attemptRegister } from "../../../store/thunks/auth";
-import wordData from "./words.json";
 import { setResponseStatus } from "../../../store/actions/user";
+import { attemptCreateWallet } from "../../../store/thunks/wallet"
+import wordData from "./words.json";
 import "./style.css";
 
 const RecoveryPhrase = () => {
@@ -21,7 +22,8 @@ const RecoveryPhrase = () => {
         registerData = { ...registerData, recoveryPhrase: phrase };
         dispatch(attemptRegister(registerData))
             .then((res) => {
-                dispatch(setResponseStatus("success register"))
+                dispatch(setResponseStatus("success register"));
+                dispatch(attemptCreateWallet(res.data.name));
                 navigate("/Login")
             })
             .catch((error) => {

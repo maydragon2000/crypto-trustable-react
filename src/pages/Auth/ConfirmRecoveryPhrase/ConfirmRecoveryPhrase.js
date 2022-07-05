@@ -29,7 +29,6 @@ const ConfirmRecoveryPhrase = () => {
                 navigate("/ResetPassword");
             }
         }).catch(({ response }) => {
-            console.log(response, "error");
             if (response.status === 404) {
                 userNameIncorrect();
             }

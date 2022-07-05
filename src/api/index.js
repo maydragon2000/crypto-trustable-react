@@ -1,5 +1,5 @@
 import axios from "axios";
-
+//auth api
 const postRegister = (user) => {
   return axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/users/register`, user);
 };
@@ -16,7 +16,6 @@ const resetUser = (user) =>
 const changePassword = (data) =>
   axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/users/changePassword`, data);
 const uploadImage = (data) => {
-  console.log(data, "imagedata");
   const formData = new FormData();
   formData.append('userName', data.userName);
   formData.append('photo', data.image);
@@ -28,6 +27,16 @@ const getUser = (token) => {
   return axios.get(`${process.env.REACT_APP_SERVER_HOST}:8000/api/user`);
 };
 
+//watchlist
+const postTokenList = (data) => axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/watchlist/savetokenlist`, data);
+const getTokenList = (userName) => axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/watchlist/gettokenlist/${userName}`);
+
+//wallet
+const postCreateWallet = (userName) => axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/createwallet`, { userName: userName });
+const getWalletAddress = (userName) => axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/getwalletaddress/${userName}`);
+const postWalletTokenList = (data) => axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/savetokenlist`, data);
+const getWalletData = (userName) => axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/getwalletdata/${userName}`);
+
 export {
   postRegister,
   postLogin,
@@ -37,4 +46,10 @@ export {
   changePassword,
   uploadImage,
   getUser,
+  postTokenList,
+  getTokenList,
+  postCreateWallet,
+  getWalletAddress,
+  postWalletTokenList,
+  getWalletData
 };

@@ -11,7 +11,6 @@ import 'react-phone-input-2/lib/style.css'
 import "./style.css"
 const Profile = () => {
     const { user } = useSelector((state) => state.user);
-    console.log(user, "user profile");
     const [disable, setDisable] = useState(true);
     const [edit, setEdit] = useState(false);
     const inputReference = useRef(null);
@@ -53,7 +52,6 @@ const Profile = () => {
             }
             setDisable(false)
         }).catch((response) => {
-            console.log(response, "response profile");
             setDisable(false);
         })
     }

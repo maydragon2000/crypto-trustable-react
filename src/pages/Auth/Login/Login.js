@@ -1,51 +1,43 @@
 import React, { useState, useEffect, useRef } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { attemptLogin } from "../../../store/thunks/auth"
 import Error from "../../../component/Error/Error"
-import { ToastContainer, toast } from 'react-toastify';
 import { setResponseStatus } from "../../../store/actions/user";
+import { attemptGetWalletAddress } from "../../../store/thunks/wallet";
 import 'react-toastify/dist/ReactToastify.css';
 import "./style.css"
 
 const Login = (props) => {
     const { responseStatus } = useSelector((state) => state.user);
     const [passwordShow, setPasswordShow] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
     const initialValues = {
         userName: "",
         password: "",
     };
-
     const validationSchema = Yup.object({
         userName: Yup.string().required("userName is Required"),
         password: Yup.string().min(5).max(255).required("Password is Required"),
     });
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const passwordIncorrect = () => toast.error("Password is not correct.");
     const userNameIncorrect = () => toast.error("Username is not correct.");
     const successRegister = () => toast.success(({ closeToast }) => <div><label>Success Register.</label><label> Please Sign In Now</label></div>);
     const successUpdatePassword = () => toast.success("Success Update New Password.");
     const ServerError = () => toast.error("Server Connection Error. Please try again.");
-    useEffect(() => {
-        console.log("this is useEffect1")
-        if (responseStatus === "success register") {
-            dispatch(setResponseStatus(""));
-            successRegister();
-        }
-        if (responseStatus === "success password updated") {
-            dispatch(setResponseStatus(""));
-            successUpdatePassword();
-        }
-    })
+
     const onSubmit = (values) => {
         setLoading(true);
         dispatch(attemptLogin(values)).then((response) => {
             if (response === 200) {
+                dispatch(attemptGetWalletAddress(values.userName));
                 navigate("/market");
             }
             if (response === 400) {
@@ -62,6 +54,16 @@ const Login = (props) => {
             setLoading(false);
         });
     };
+    useEffect(() => {
+        if (responseStatus === "success register") {
+            dispatch(setResponseStatus(""));
+            successRegister();
+        }
+        if (responseStatus === "success password updated") {
+            dispatch(setResponseStatus(""));
+            successUpdatePassword();
+        }
+    })
     return (
         <Formik
             initialValues={initialValues}

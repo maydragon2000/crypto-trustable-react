@@ -16,7 +16,6 @@ export const attemptLogin = (user) => (dispatch) =>
 
     if (data.error_message === undefined) {
       const decoded = jwt_decode(data.token);
-      console.log(decoded, "decoded");
       dispatch(login(decoded));
       localStorage.setItem("token", data.token);
       return 200;
@@ -27,7 +26,6 @@ export const attemptLogin = (user) => (dispatch) =>
     else if (response.status === 404)
       return 404
     else return 500
-
   });
 
 export const attemptResetPassword = (user) => (dispatch) =>

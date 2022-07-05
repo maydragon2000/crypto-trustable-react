@@ -365,3 +365,36 @@ input[type=radio] {
 .buy-content {
     margin-top: 80px;
 }
+
+.receive-address .input-wrap {
+    width: 100%;
+}
+
+.receive-address .input-wrap input {
+    width: 100%;
+    font-size: 14px;
+}
+
+.receive-address .address-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.receive-address .address-wrap button {
+    background: transparent;
+    border: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.receive-address .address-wrap button svg {
+    width: 20px;
+    height: 20px;
+    color: #9295A6;
+}
+
+.buy-content .warning {
+    color: #9295A6;
+    font-size: 14px;
+    margin: 20px 0px 5px 0px;
+}

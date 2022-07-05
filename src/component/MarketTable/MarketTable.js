@@ -4,7 +4,6 @@ import "./style.css"
 import CoinRow from "./CoinRow";
 
 const MarketTable = ({ marketData, smallType }) => {
-
     return (
         <>
             <table className={`table market-table ${smallType ? `market-table-small` : `market-table-normal`}`}>
@@ -14,13 +13,13 @@ const MarketTable = ({ marketData, smallType }) => {
                         <th className="name">Coin Name <img alt="" src="image/arrow-up-triangle.svg" /></th>
                         <th className="price">Coin Price <img alt="" src="image/arrow-up-triangle.svg" /></th>
                         <th className="percent">24% <img alt="" src="image/arrow-up-triangle.svg" /></th>
-                        <th className="high-price" style={{ display: smallType ? "none" : "" }}>24h High Price <img alt="" src="image/arrow-up-triangle.svg" /></th>
-                        <th className="low-price" style={{ display: smallType ? "none" : "" }}>24h Low s <img alt="" src="image/arrow-up-triangle.svg" /></th>
-                        <th className="chart" style={{ display: smallType ? "none" : "" }}>Chart <img alt="" src="image/arrow-up-triangle.svg" /></th>
+                        <th className="high-price" style={{ display: smallType ? "none" : "" }}>Market Cap<img alt="" src="image/arrow-up-triangle.svg" /></th>
+                        <th className="low-price" style={{ display: smallType ? "none" : "" }}>Volume(24h)<img alt="" src="image/arrow-up-triangle.svg" /></th>
+                        <th className="chart" style={{ display: smallType ? "none" : "" }}>Last 7 Days </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {marketData.map((item, index) => <CoinRow smallType={smallType} item={item} key={index} index={index} />)}
+                    {!marketData ? <div></div> : marketData.map((item, index) => <CoinRow smallType={smallType} item={item} key={index} index={index} />)}
                 </tbody>
             </table>
             <br />

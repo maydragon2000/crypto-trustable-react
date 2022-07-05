@@ -19,7 +19,6 @@ const LeftSide = () => {
     })
     const uploadedImage = user.image;
     const [disable, setDisable] = useState(true);
-    console.log(uploadedImage, "uploadImage");
     const [isVisible, setIsVisible] = useState(true)
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -61,7 +60,6 @@ const LeftSide = () => {
                     style={{ display: "none" }}
                     ref={hiddenFileInput}
                     name="myImage" onChange={(event) => {
-                        console.log(event.target.files[0]);
                         setSendImageData({
                             ...sendImageData, image: event.target.files[0]
                         })

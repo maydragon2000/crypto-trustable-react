@@ -136,6 +136,19 @@
     height: 50px;
 }
 
+.watchlist-right-down-header a {
+    height: 40px;
+    color: #6C7080;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.watchlist-right-down-header a:focus {
+    color: #5367FF;
+    text-decoration: underline;
+    text-underline-offset: 25px;
+}
+
 .watchlist-right .market-table tbody {
     height: 230px;
 }

@@ -1,157 +1,86 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { GoPlus, GoSearch } from "react-icons/go";
-import TableFilterCategory from "../../component/TableFilterCategory/TableFilterCategory";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 import MarketTable from "../../component/MarketTable/MarketTable";
 import ExchangeCoin from "../../component/ExchangeCoin/ExchangeCoin";
 import AddCoinModal from "../../component/AddCoinModal/AddCoinModal";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { attemptSendTokenList } from "../../store/thunks/watchlist";
+import { attemptGetTokenList } from "../../store/thunks/watchlist";
 import "./style.css";
 const Watchlist = () => {
-    const [marketData, setMarketData] = useState([{
-        name: {
-            image: "bitcoin",
-            fullName: "Bitcoin",
-            logogram: "BTC"
-        },
-        id: 1,
-        price: "$43,975.72",
-        percent: "+0.60%",
-        highPrice: "$44,727.80	",
-        lowPrice: "$43,318.64",
-        increase: true
-    },
-    {
-        name: {
-            image: "ethereum",
-            fullName: "Ethereum",
-            logogram: "ETH"
-        },
-        id: 1027,
-        price: "$3,187.62",
-        percent: "-2.79%",
-        highPrice: "$3,263.16",
-        lowPrice: "$3,077.03",
-        increase: false
-    },
-    {
-        name: {
-            image: "xrp",
-            fullName: "XRP",
-            logogram: "XRP"
-        },
-        id: 52,
-        price: "$0.8721",
-        percent: "+1.40%",
-        highPrice: "$0.9091		",
-        lowPrice: "$0.8484	",
-        increase: true
-    },
-    {
-        name: {
-            image: "litecoin",
-            fullName: "Litecoin",
-            logogram: "LTC"
-        },
-        id: 2,
-        price: "$138.61",
-        percent: "+0.38%",
-        highPrice: "$140.79		",
-        lowPrice: "$136.92	",
-        increase: true
-    },
-    {
-        name: {
-            image: "polygon",
-            fullName: "Polygon",
-            logogram: "MATIC"
-        },
-        id: 3890,
-        price: "$1.98",
-        percent: "+2.46%	",
-        highPrice: "$2.06		",
-        lowPrice: "$1.91",
-        increase: true
-    },
-    {
-        name: {
-            image: "solana",
-            fullName: "Solana",
-            logogram: "SOL"
-        },
-        id: 5426,
-        price: "$112.13",
-        percent: "+1.06%",
-        highPrice: "$116.83		",
-        lowPrice: "$110.66",
-        increase: true
-    },
-    {
-        name: {
-            image: "usdc",
-            fullName: "United States Dollar",
-            logogram: "USDC"
-        },
-        id: 3408,
-        price: "$42164.54",
-        percent: "+7.76%",
-        highPrice: "$42164.54	",
-        lowPrice: "$42164.54",
-        increase: true
-    },
-    {
-        name: {
-            image: "cardano",
-            fullName: "Cardano",
-            logogram: "ADA"
-        },
-        id: 2010,
-        price: "$1.18",
-        percent: "-0.33%",
-        highPrice: "$1.21		",
-        lowPrice: "$1.21	",
-        increase: false
-    },
-    {
-        name: {
-            image: "tether",
-            fullName: "Tether",
-            logogram: "USDT"
-        },
-        id: 825,
-        price: "$42164.54",
-        percent: "+7.76%",
-        highPrice: "$42164.54",
-        lowPrice: "$42164.54",
-        increase: true
-    },
-    {
-        name: {
-            image: "avalanche",
-            fullName: "Avalanche",
-            logogram: "AVAX"
-        },
-        id: 5805,
-        price: "$89.62",
-        percent: "+2.44%",
-        highPrice: "$91.93	",
-        lowPrice: "$87.38	",
-        increase: true
-    },]);
+
+    const { isAuth, user } = useSelector(state => state.user);
+    const { tokenlist } = useSelector(state => state.watchlist);
+    const [marketData, setMarketData] = useState();
+    const [rightMarketData, setRightMarketData] = useState();
     const [modalShow, setModalShow] = useState(false);
+    const [selectedValue, setSelectedValue] = useState(undefined);
+    const [trendingSelect, setTrendingSelect] = useState("getgainers");
+
     const navigate = useNavigate();
-    const { isAuth } = useSelector(state => state.user);
-    useEffect(() => {
-        if (isAuth === false) {
-            navigate('/login');
-        }
-    })
+    const dispatch = useDispatch();
     const onOpenModal = () => {
         setModalShow(true);
     }
     const onCloseModal = () => {
         setModalShow(false);
     }
+    const getWatchlistData = () => {
+        axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/watchlistCoin`, { tokenlist: tokenlist })
+            .then((res) => {
+                setMarketData(Object.values(res.data.data));
+            })
+            .catch((res) => {
+                console.log(res, "res error");
+            })
+    }
+    const getTrendingData = () => {
+        axios.get(`http://localhost:5000/api/cryptocurrency/${trendingSelect}`)
+            .then((res) => {
+                setRightMarketData(res.data.data);
+            })
+            .catch((res) => {
+                console.log(res, "res error");
+            });
+    }
+    useEffect(() => {
+        if (!isAuth) {
+            navigate('/login');
+        }
+        if (isAuth)
+            dispatch(attemptGetTokenList(user.name))
+                .then((res) => {
+                    console.log("success");
+                })
+        const interval = setInterval(() => {
+            getTrendingData();
+        }, 60000);
+        return () => clearInterval(interval);
+    }, [])
+    useEffect(() => {
+        if (!!tokenlist) {
+            getWatchlistData();
+            const interval = setInterval(() => {
+                getWatchlistData();
+            }, 60000);
+            return () => clearInterval(interval);
+        }
+    }, [tokenlist]);
+    useEffect(() => {
+        if (!modalShow && selectedValue) {
+            const sendTokenList = selectedValue.map(item => item.label);
+            const sendData = { tokenlist: sendTokenList, userName: user.name };
+            dispatch(attemptSendTokenList(sendData))
+                .then(res => {
+                    setSelectedValue(undefined);
+                })
+        }
+    }, [modalShow]);
+    useEffect(() => {
+        getTrendingData();
+    }, [trendingSelect]);
     return (
         <>
             <div className="watchlist">
@@ -192,15 +121,15 @@ const Watchlist = () => {
                     </div>
                     <div className="watchlist-right-down">
                         <div className="watchlist-right-down-header">
-                            <TableFilterCategory type="normal" name="Top Gainers" />
-                            <TableFilterCategory type="normal" name="Top Gainers" />
-                            <TableFilterCategory type="normal" name="Top Gainers" />
+                            <Link to="" onClick={() => setTrendingSelect("getgainers")}>Top Gainers</Link>
+                            <Link to="" onClick={() => setTrendingSelect("getlosers")}>Top Loser</Link>
+                            <Link to="" onClick={() => setTrendingSelect("getnewmarket")}>New in Market</Link>
                         </div>
-                        <MarketTable smallType={true} marketData={marketData} />
+                        <MarketTable smallType={true} marketData={rightMarketData} />
                     </div>
                 </div>
             </div>
-            <AddCoinModal modalShow={modalShow} onCloseModal={onCloseModal} />
+            <AddCoinModal selectedValue={selectedValue} setSelectedValue={setSelectedValue} modalShow={modalShow} onCloseModal={onCloseModal} />
         </>
     )
 }

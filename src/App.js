@@ -21,8 +21,10 @@ import Wallet from './pages/Profile/Wallet/Wallet';
 import WalletHistory from './pages/Profile/WalletHistory/WalletHistory';
 import Learn from './pages/Learn/Learn';
 import Bonus from './pages/Bonus/Bonus';
+
 const history = createBrowserHistory();
 const store = configureStore(history);
+
 function App() {
   return (
     <div className="App">
@@ -37,7 +39,7 @@ function App() {
             <Route path='/' element={<Layout />}>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/market" element={<Market />} />
-              <Route exact path="detail/:tokenId" element={<CoinDetail />} />
+              <Route exact path="detail/:tokenSymbol" element={<CoinDetail />} />
               <Route exact path="/watchlist" element={<Watchlist />} />
               <Route exact path="/learn" element={<Learn />} />
               <Route exact path="/bonus" element={<Bonus />} />
@@ -56,3 +58,4 @@ function App() {
 }
 
 export default App;
+

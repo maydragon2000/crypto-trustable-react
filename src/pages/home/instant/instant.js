@@ -28,7 +28,7 @@ const Instant = () => {
                     </div> */}
                 </div>
                 <div className="col-6 right">
-                    {/* <img alt="" src="image/home-instant.png" /> */}
+                    <img alt="" src="image/homelogo/2.gif" />
                 </div>
             </div>
         </>

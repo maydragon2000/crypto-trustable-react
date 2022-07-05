@@ -28,7 +28,6 @@ const Sequrity = () => {
     const success = () => toast.success("Success Update New Password.");
     const passwordIncorrect = () => toast.error("Current Password is not correct.");
     const onSubmit = (values) => {
-        console.log(values, "reset value");
         setLoading(true);
         dispatch(attemptChangePassword(values)).then((res) => {
             success();
