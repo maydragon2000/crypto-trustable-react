@@ -37,7 +37,7 @@ const Watchlist = () => {
             })
     }
     const getTrendingData = () => {
-        axios.get(`http://localhost:5000/api/cryptocurrency/${trendingSelect}`)
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/${trendingSelect}`)
             .then((res) => {
                 setRightMarketData(res.data.data);
             })

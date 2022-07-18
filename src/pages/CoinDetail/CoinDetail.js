@@ -118,14 +118,14 @@ const CoinDetail = () => {
         copySuccess();
     }
     const getSinglecoindata = () => {
-        axios.get(`http://localhost:5000/api/cryptocurrency/getcoindetail/${tokenSymbol}`)
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/getcoindetail/${tokenSymbol}`)
             .then((res) => {
                 setSingleCoin(res.data.data[tokenSymbol]);
             })
             .catch((res) => {
                 console.log(res, "singleCoinError");
             });
-        axios.get(`http://localhost:5000/api/cryptocurrency/coinHistory/${tokenSymbol}`)
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/coinHistory/${tokenSymbol}`)
             .then((res) => {
                 setSingleCoinHistory(res.data.data[tokenSymbol]);
             })
@@ -134,7 +134,7 @@ const CoinDetail = () => {
             });
     };
     const getMainMarketData = () => {
-        axios.get('http://localhost:5000/api/cryptocurrency/getcoins')
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/getcoins`)
             .then((res) => {
                 setMarketData(res.data);
             })

@@ -56,7 +56,7 @@ const Market = () => {
         setIndustryValue(undefined);
     }
     const getMainMarketData = () => {
-        axios.get('http://localhost:5000/api/cryptocurrency/getcoins')
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/getcoins`)
             .then((res) => {
                 setMarketData(res.data);
             })
@@ -65,7 +65,7 @@ const Market = () => {
             });
     }
     const getMainCoin = () => {
-        axios.get('http://localhost:5000/api/cryptocurrency/getMainCoin')
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/getMainCoin`)
             .then((res) => {
                 setTopMarketData(Object.values(res.data.data).sort(function (a, b) { return a.cmc_rank - b.cmc_rank }));
             })
@@ -74,7 +74,7 @@ const Market = () => {
             })
     }
     const getTrendingData = () => {
-        axios.get(`http://localhost:5000/api/cryptocurrency/${trendingSelect}`)
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/${trendingSelect}`)
             .then((res) => {
                 setRightMarketData(res.data.data);
             })

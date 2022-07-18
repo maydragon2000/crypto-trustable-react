@@ -10,7 +10,7 @@ const TopMarket = () => {
         setInterval(getTopMarket, 60000);
     }, [])
     const getTopMarket = () => {
-        axios.get('http://localhost:5000/api/cryptocurrency/getMainCoin')
+        axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/cryptocurrency/getMainCoin`)
             .then((res) => {
                 setMarketData(Object.values(res.data.data).sort(function (a, b) { return a.cmc_rank - b.cmc_rank }));
             })
