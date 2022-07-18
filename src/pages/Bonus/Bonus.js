@@ -1,7 +1,9 @@
 import React from "react";
 import { ArkenWidget } from 'arken-widget'
-// import CryptoAccount from "send-crypto";
+import cryptocurrencies from "cryptocurrencies"
+import Icon from "react-crypto-icons";
 import "./style.css";
+import { toLower } from "lodash";
 const Bonus = () => {
     return (
         <>
@@ -25,6 +27,15 @@ const Bonus = () => {
                     }}
                 /> */}
                 <button>create</button>
+                <div>
+                    <img src={`https://api.coinicons.net/icon/ETH/64x64`} alt="img" />
+                    {/* <Icon name="btc" size={25} /> */}
+                </div>
+                <div>
+                    {/* {Object.values(cryptocurrencies).map((item, index) =>
+                        <div>{item}<p>{cryptocurrencies.symbols()[index]}</p></div>
+                    )} */}
+                </div>
             </div>
         </>
     )

@@ -10,7 +10,7 @@
 }
 
 .coin-selection-wrap .input-wrap {
-    width: 50%;
+    width: 100%;
 }
 
 .coin-selection-wrap .input-wrap p {
@@ -25,6 +25,7 @@
     background: transparent;
     border: 0px;
     border-left: solid 1px #6C7080;
+    width: 100%;
 }
 
 .coin-selection-wrap .input-wrap input::placeholder {

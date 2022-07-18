@@ -37,6 +37,9 @@ const getWalletAddress = (userName) => axios.get(`${process.env.REACT_APP_SERVER
 const postWalletTokenList = (data) => axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/savetokenlist`, data);
 const getWalletData = (userName) => axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/getwalletdata/${userName}`);
 
+//sendCrypto
+const postSendCrypto = (data) => axios.post(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/sendcrypto`, data);
+const getGasFee = () => axios.get(`${process.env.REACT_APP_SERVER_HOST}/api/wallet/getgasfee`);
 export {
   postRegister,
   postLogin,
@@ -51,5 +54,7 @@ export {
   postCreateWallet,
   getWalletAddress,
   postWalletTokenList,
-  getWalletData
+  getWalletData,
+  postSendCrypto,
+  getGasFee
 };

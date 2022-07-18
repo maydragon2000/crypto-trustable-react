@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AddCoinModal from "../../../component/AddCoinModal/AddCoinModal";
 import { GoPlus } from "react-icons/go"
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { attemptGetWalletData, attemptSendWalletTokenList } from "../../../store/thunks/wallet"
+import AddCoinModal from "../../../component/AddCoinModal/AddCoinModal";
 import "./style.css"
 const Wallet = () => {
     const { walletAddress, walletData } = useSelector(state => state.wallet);
@@ -46,6 +46,7 @@ const Wallet = () => {
         },
     ]
     const [selectedValue, setSelectedValue] = useState(undefined);
+    const [loading, setLoading] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -62,26 +63,29 @@ const Wallet = () => {
         if (!isAuth) {
             navigate('/login');
         }
+        setLoading(true);
         if (isAuth)
             dispatch(attemptGetWalletData(user.name))
                 .then((res) => {
-                    console.log("success");
+                    setLoading(false)
                 })
     }, []);
     useEffect(() => {
         if (!modalShow && selectedValue) {
             const sendTokenList = selectedValue.map(item => item.label);
             const sendData = { tokenlist: sendTokenList, userName: user.name };
+            setLoading(true)
             dispatch(attemptSendWalletTokenList(sendData))
                 .then(res => {
                     dispatch(attemptGetWalletData(user.name))
                         .then((res) => {
-                            console.log("success");
+                            setLoading(false);
                         })
                     setSelectedValue(undefined);
                 })
         }
     }, [modalShow]);
+    console.log(walletData, "walletData");
     return (
         <>
             <div className="wallet">
@@ -107,7 +111,8 @@ const Wallet = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {!walletData ? <>Loading</>
+                        <div className="loader-wrap"><div className="Loader"></div></div>
+                        {/* {!walletData || loading ? <div className="loader-wrap"><div className="Loader"></div></div>
                             : <>
                                 {
                                     walletData.map((item, index) => <tr key={index} onClick={() => onClickToken(item)}>
@@ -124,7 +129,7 @@ const Wallet = () => {
                                     </tr>)
                                 }
                             </>
-                        }
+                        } */}
 
                     </tbody>
                 </table>

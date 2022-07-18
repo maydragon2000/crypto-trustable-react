@@ -1,8 +1,9 @@
 import React, { useEffect, useReducer, useState } from "react"
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaStar } from "react-icons/fa"
 import { AiOutlineExclamationCircle } from "react-icons/ai"
@@ -12,8 +13,10 @@ import { RiFileCopyLine } from "react-icons/ri";
 import TableFilterCategory from "../../component/TableFilterCategory/TableFilterCategory";
 import MarketTable from "../../component/MarketTable/MarketTable";
 import SelectCoin from "../../component/SelectCoin/SelectCoin";
+import { attemptGetGasfee, attemptSendCrypto } from "../../store/thunks/send";
 
 import 'react-tabs/style/react-tabs.css';
+import 'react-toastify/dist/ReactToastify.css';
 import "./style.css";
 
 const CoinDetail = () => {
@@ -104,7 +107,16 @@ const CoinDetail = () => {
     const [singleCoinHistory, setSingleCoinHistory] = useState();
     const [percent, setPercent] = useState(0);
     const [isCopyClipboard, setIsClipboard] = useState(false);
+    const [selectedSendCoin, setSelectedSendCoin] = useState({ value: 1, label: 'BTC', image: 1 });
+    const [sendCoinAmount, setSendCoinAmount] = useState(0);
+    const [sendAddress, setSendAddress] = useState("");
+    const dispatch = useDispatch();
 
+    const copySuccess = () => toast.success("Copy success");
+    const onClickClipboard = () => {
+        setIsClipboard(true);
+        copySuccess();
+    }
     const getSinglecoindata = () => {
         axios.get(`http://localhost:5000/api/cryptocurrency/getcoindetail/${tokenSymbol}`)
             .then((res) => {
@@ -130,12 +142,20 @@ const CoinDetail = () => {
                 console.log(res, "res error");
             });
     }
+    const sendCoin = () => {
+        console.log(selectedSendCoin, "selectedSendCoin");
+        console.log(sendCoinAmount, "sendCoinAmount");
+        console.log(sendAddress, "sendAddress");
+        const data = { coin: selectedSendCoin.label, amount: sendCoinAmount, address: sendAddress };
+        dispatch(attemptGetGasfee());
+        // dispatch(attemptSendCrypto(data));
+    }
     useEffect(() => {
         const interval = getMainMarketData();
         setInterval(() => {
             getMainMarketData();
             getSinglecoindata();
-        }, 60000);
+        }, 6000000);
         return () => clearInterval(interval);
     }, [])
     useEffect(() => {
@@ -249,6 +269,7 @@ const CoinDetail = () => {
                 </div>
                 <div className="currency-right">
                     <div className="buy-crypto">
+                        <ToastContainer limit={3} autoClose={3000} hideProgressBar={true} theme="colored" />
                         <Tabs default={1}>
                             <TabList>
                                 <Tab>Send Coins</Tab>
@@ -256,18 +277,16 @@ const CoinDetail = () => {
                             </TabList>
                             <TabPanel>
                                 <div className="buy-content">
-
-                                    <SelectCoin label="Quantity(BTC)" placeholder="$0" marketData={coinList} initialId={0} />
-
+                                    <SelectCoin label="Quantity(BTC)" coinValue={selectedSendCoin} setCoinValue={setSelectedSendCoin} coinAmount={sendCoinAmount} setCoinAmount={setSendCoinAmount} placeholder="0" marketData={coinList} initialId={0} />
                                     <div className="coin-selection-wrap ">
                                         <div className="input-wrap">
                                             <p>Address For send</p>
-                                            <input placeholder="Insert the adress" />
+                                            <input value={sendAddress} onChange={(e) => setSendAddress(e.target.value)} placeholder="Insert the adress" />
                                         </div>
                                     </div>
 
                                     <p className="total">Total: (+Fee 0.2) 0.00</p>
-                                    <button className="buy-button">Send COIN</button>
+                                    <button className="buy-button" onClick={sendCoin}>Send COIN</button>
                                 </div>
                             </TabPanel>
                             <TabPanel>
@@ -279,11 +298,10 @@ const CoinDetail = () => {
                                             <div className="address-wrap">
                                                 <input disabled value={walletAddress.bitcoinAddress} />
                                                 <CopyToClipboard text={walletAddress.bitcoinAddress}
-                                                    onCopy={() => setIsClipboard(true)}>
+                                                    onCopy={onClickClipboard}>
                                                     <button className="clip-button"><RiFileCopyLine /></button>
                                                 </CopyToClipboard>
                                             </div>
-
                                         </div>
                                     </div>
                                     <p className="warning">
@@ -297,7 +315,7 @@ const CoinDetail = () => {
                                             <div className="address-wrap">
                                                 <input disabled value={walletAddress.ERC20Address} />
                                                 <CopyToClipboard text={walletAddress.ERC20Address}
-                                                    onCopy={() => setIsClipboard(true)}>
+                                                    onCopy={onClickClipboard}>
                                                     <button className="clip-button"><RiFileCopyLine /></button>
                                                 </CopyToClipboard>
                                             </div>

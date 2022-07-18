@@ -3,54 +3,96 @@ import { Modal } from "react-bootstrap";
 import Select, { defaultTheme } from "react-select"
 import "./style.css"
 const AddCoinModal = ({ modalShow, onCloseModal, selectedValue, setSelectedValue }) => {
-    const [marketData, setMarketData] = useState([{
-        name: {
-            image: "bitcoin",
-            fullName: "Bitcoin",
-            logogram: "BTC"
+    const [marketData, setMarketData] = useState([
+        {
+            name: {
+                image: "polygon",
+                fullName: "Polygon",
+                logogram: "MATIC"
+            },
+            id: 3890,
         },
-        id: 1,
-    },
-    {
-        name: {
-            image: "ethereum",
-            fullName: "Ethereum",
-            logogram: "ETH"
+        {
+            name: {
+                image: "usdc",
+                fullName: "United States Dollar",
+                logogram: "USDC"
+            },
+            id: 3408,
         },
-        id: 1027,
-    },
-    {
-        name: {
-            image: "polygon",
-            fullName: "Polygon",
-            logogram: "MATIC"
+        {
+            name: {
+                image: "tether",
+                fullName: "Tether",
+                logogram: "USDT"
+            },
+            id: 825,
         },
-        id: 3890,
-    },
-    {
-        name: {
-            image: "usdc",
-            fullName: "United States Dollar",
-            logogram: "USDC"
+        {
+            name: {
+                image: "avalanche",
+                fullName: "Avalanche",
+                logogram: "AVAX"
+            },
+            id: 5805,
         },
-        id: 3408,
-    },
-    {
-        name: {
-            image: "tether",
-            fullName: "Tether",
-            logogram: "USDT"
+        {
+            name: {
+                image: "polygon",
+                fullName: "Dai",
+                logogram: "DAI"
+            },
+            id: 4943,
         },
-        id: 825,
-    },
-    {
-        name: {
-            image: "avalanche",
-            fullName: "Avalanche",
-            logogram: "AVAX"
+        {
+            name: {
+                image: "Wrapped Bitcoin",
+                fullName: "Wrapped Bitcoin",
+                logogram: "WBTC"
+            },
+            id: 3717,
         },
-        id: 5805,
-    },]);
+        {
+            name: {
+                image: "Uniswap",
+                fullName: "Uniswap",
+                logogram: "UNI"
+            },
+            id: 7083,
+        },
+        {
+            name: {
+                image: "Cronos",
+                fullName: "Cronos",
+                logogram: "CRO"
+            },
+            id: 3635,
+        },
+        {
+            name: {
+                image: "Chainlink",
+                fullName: "Chainlink",
+                logogram: "LINK"
+            },
+            id: 1975,
+        },
+        {
+            name: {
+                image: "Ethereum Classic",
+                fullName: "Ethereum Classic",
+                logogram: "ETC"
+            },
+            id: 1321,
+        },
+        {
+            name: {
+                image: "Bitcoin Cash",
+                fullName: "Bitcoin Cash",
+                logogram: "BCH"
+            },
+            id: 1831,
+        },
+    ]);
     let options = [];
     useEffect(() => {
         marketData.map((item, index) => {
